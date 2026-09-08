@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Rental Website for Mansions, Golf Courses, Swimming Pools etc.">
+    <title>Stay&Play</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="assets/logo.png" type="image/x-icon">
+
+    <!-- Font: Lato -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="name-logo">
+            <img class="logo" src="assets/logo.png" alt="Stay&Play">
+            <a class="name" href="index.html">Stay&Play</a>
+        </div>
+        <nav>
+            <a class="nav-link" href="#">HOME</a>
+            <a class="nav-link" href="#">WHERE TO STAY</a>
+            <a class="nav-link" href="#">WHERE TO PLAY</a>
+            <a class="nav-link" href="#">GROUP TRAVEL</a>
+            <a class="nav-button" href="#">BOOK A TEE TIME</a>
+            <a class="nav-button-small" href="#"><img src="assets/golf-ball.png" alt="Stay&Play"></a>
+            <form class="search" action="#">
+                <input class="search-box" type="text" name="keyword" id="keyword" placeholder="SEARCH">
+                <!-- <input class="search-button" type="button" value="S"> -->
+                <button class="search-button" type="submit">
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="122.879px" height="119.799px" viewBox="0 0 122.879 119.799" enable-background="new 0 0 122.879 119.799" xml:space="preserve">
+                        <path d="M49.988,0h0.016v0.007C63.803,0.011,76.298,5.608,85.34,14.652c9.027,9.031,14.619,21.515,14.628,35.303h0.007v0.033v0.04 h-0.007c-0.005,5.557-0.917,10.905-2.594,15.892c-0.281,0.837-0.575,1.641-0.877,2.409v0.007c-1.446,3.66-3.315,7.12-5.547,10.307 l29.082,26.139l0.018,0.016l0.157,0.146l0.011,0.011c1.642,1.563,2.536,3.656,2.649,5.78c0.11,2.1-0.543,4.248-1.979,5.971 l-0.011,0.016l-0.175,0.203l-0.035,0.035l-0.146,0.16l-0.016,0.021c-1.565,1.642-3.654,2.534-5.78,2.646 c-2.097,0.111-4.247-0.54-5.971-1.978l-0.015-0.011l-0.204-0.175l-0.029-0.024L78.761,90.865c-0.88,0.62-1.778,1.209-2.687,1.765 c-1.233,0.755-2.51,1.466-3.813,2.115c-6.699,3.342-14.269,5.222-22.272,5.222v0.007h-0.016v-0.007 c-13.799-0.004-26.296-5.601-35.338-14.645C5.605,76.291,0.016,63.805,0.007,50.021H0v-0.033v-0.016h0.007 c0.004-13.799,5.601-26.296,14.645-35.338C23.683,5.608,36.167,0.016,49.955,0.007V0H49.988L49.988,0z M50.004,11.21v0.007h-0.016 h-0.033V11.21c-10.686,0.007-20.372,4.35-27.384,11.359C15.56,29.578,11.213,39.274,11.21,49.973h0.007v0.016v0.033H11.21 c0.007,10.686,4.347,20.367,11.359,27.381c7.009,7.012,16.705,11.359,27.403,11.361v-0.007h0.016h0.033v0.007 c10.686-0.007,20.368-4.348,27.382-11.359c7.011-7.009,11.358-16.702,11.36-27.4h-0.006v-0.016v-0.033h0.006 c-0.006-10.686-4.35-20.372-11.358-27.384C70.396,15.56,60.703,11.213,50.004,11.21L50.004,11.21z"/>
+                    </svg>
+                </button>
+            </form>
+
+            <svg class="menu-hamburger" width="800px" height="800px" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 5H20C20.5523 5 21 5.44772 21 6C21 6.55228 20.5523 7 20 7H4C3.44772 7 3 6.55228 3 6C3 5.44772 3.44772 5 4 5Z"/>
+                <path d="M4 11H20C20.5523 11 21 11.4477 21 12C21 12.5523 20.5523 13 20 13H4C3.44772 13 3 12.5523 3 12C3 11.4477 3.44772 11 4 11Z"/>
+                <path d="M4 17H20C20.5523 17 21 17.4477 21 18C21 18.5523 20.5523 19 20 19H4C3.44772 19 3 18.5523 3 18C3 17.4477 3.44772 17 4 17Z"/>
+            </svg>
+
+        </nav>
+    </header>
+
+    <main>
+        <div class="breadcrum">
+            <ol>
+                <li>Golf Course</li><span class="breadcrum-sep">></span>
+                <li>Florida</li><span class="breadcrum-sep">></span>
+                <li>Orlando</li><span class="breadcrum-sep">></span>
+                <li>Eagle Creek Golf Club</li>
+            </ol>
+        </div>
+        <div class="content">
+            <article>
+                <section class="name-sub">
+                    <h1>Eagle Creek Golf Club, Stay and Play</h1>
+                    <section class="subtitle">
+                        <span class="star green">★</span>
+                        <span class="star green">★</span>
+                        <span class="star green">★</span>
+                        <span class="star green">★</span>
+                        <span class="star gray">★</span>
+                        <span class="rating">4.0</span>
+                        <span>(9 Reviews)</span>
+                        <span class="not-in-small">|</span>
+                        <br class="in-small">
+                        <span>🕒 TEE TIMES DAILY 7AM - 6PM</span>
+                    </section>
+                </section>
+                <section class="images">
+                    <div class="left-img">
+                        <img src="assets/eagle-creek-1.jpg" alt="Stay&Play">
+                    </div>
+                    <div class="right-top-img">
+                        <img src="assets/eagle-creek-2.jpg" alt="Stay&Play">
+                    </div>
+                    <div class="right-bottom-img">
+                        <img src="assets/eagle-creek-3.jpg" alt="Stay&Play">
+                    </div>
+                </section>
+                <section class="alternate">
+                    <section class="aside">
+                        <div class="option">
+                            <div class="title">
+                                <img src="assets/bed.png" alt="Stay&Play">
+                                <h2 class="blue">STAY</h2>
+                            </div>
+                            <div class="details">
+                                <div class="info">
+                                    <div class="data">
+                                        <h3>800+</h3>
+                                        <p>PLACES TO STAY NEARBY</p>
+                                    </div>
+                                    <div class="vertical-bar not-in-small"></div>
+                                    <div class="data not-in-small">
+                                        <P>FROM</P>
+                                        <h3>$300</h3>
+                                    </div>
+                                </div>
+                                <button class="blue-button">BOOK A PLACE TO STAY</button>
+                            </div>
+                        </div>
+                        <div class="option">
+                            <div class="title">
+                                <img src="assets/golf-ball-color.png" alt="Stay&Play">
+                                <h2 class="green">PLAY</h2>
+                            </div>
+                            <div class="details">
+                                <div class="info">
+                                    <div class="data">
+                                        <P>PEAK</P>
+                                        <h3>$100</h3>
+                                        <p>ROUND</p>
+                                    </div>
+                                    <div class="vertical-bar not-in-small"></div>
+                                    <div class="data not-in-small">
+                                        <P>OFF-PEAK</P>
+                                        <h3>$75</h3>
+                                        <P>ROUND</P>
+                                    </div>
+                                    <div class="vertical-bar not-in-small"></div>
+                                    <div class="data not-in-small">
+                                        <p>TWILIGHT</p>
+                                        <h3>$60</h3>
+                                        <p>ROUND</p>
+                                    </div>
+                                </div>
+                                <button class="green-button">BOOK A TEE TIME</button>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+                <section class="details">
+                    <p>Eagle Creek Golf Club combines scenic views with a championship-level course that offers a memorable golfing experience. Nestled amidst lush landscapes and serene water features, this course is known for its challenging design and exceptional playing conditions, making it a must-play destination for golf enthusiasts.</p>
+                    <a href="#">READ MORE
+                        <svg
+                            width="12"
+                            height="12"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                d="M6 9L12 15L18 9"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
+                        </svg>
+                    </a>
+                </section>
+
+                <div class="course-specs">
+                    <p class="course-name">EAGLE CREEK GOLF
+                        CLUB AT A GLANCE</p>
+                    <div class="specs">
+                        <div class="spec">
+                            <img src="assets/golf.svg" alt="Stay&Play">
+                            <span>PAR: 72</span>
+                        </div>
+                        <div class="spec">
+                            <img src="assets/measuring-tape.png" alt="Stay&Play">
+                            <span>TOTAL YARDS: 7305</span>
+                        </div>
+                        <div class="spec">
+                            <img src="assets/people.svg" alt="Stay&Play">
+                            <span>PUBLIC COURSE</span>
+                        </div>
+                    </div>
+                    <button class="more-info">MORE COURSE HIGHLIGHTS</button>
+                </div>
+
+                <section class="options">
+                    <h2 class="h2">Find the Perfect Stay Near the Eagle Creek Golf Club in Orlando, FL</h2>
+                    <div class="filters">
+                        <button class="filter">STAY WITHIN 10 MILES <svg
+                                width="12"
+                                height="12"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="M6 9L12 15L18 9"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg></button>
+                        <button class="filter">PROPERTY TYPE <svg
+                                width="12"
+                                height="12"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="M6 9L12 15L18 9"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg></button>
+                        <button class="filter">2 BEDROOM <svg
+                                width="12"
+                                height="12"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="M6 9L12 15L18 9"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg></button>
+                        <button class="filter">MOST POPULAR <svg
+                                width="12"
+                                height="12"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="M6 9L12 15L18 9"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg></button>
+                    </div>
+                </section>
+
+                <div class="resorts">
+                    <div class="r11">
+                        <div class="img-area">
+                            <button class="text">50+ GOLF<br class="not-in-small">COURSES NEARBY</button>
+                            <img src="assets/eco.png" alt="Stay&Play">
+                            <img src="assets/location.png" alt="Stay&Play">
+                            <img src="assets/heart.png" alt="Stay&Play">
+                        </div>
+                        <div class="desc-area">
+                            <div class="review"></div>
+                            <h3>The Par View Lodge</h3>
+                            <span class="site">Booking.com</span>
+                            <span class="price">From $250</span>
+                            <p>Shuttle Service to the Course - Golf Club Storage - Pet-Friendly - On-Site Dining Options - Sleeps 8</p>
+                            <span class="location">Florida > Orlando</span>
+
+                            <div class="button-area">
+                                <button class="learn-more">LEARN MORE</button>
+                                <button class="see-dates">SEE DATES</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="r12">
+                        <div class="img-area">
+                            <button class="text">50+ GOLF<br>COURSES NEARBY</button>
+                            <img src="assets/eco.png" alt="Stay&Play">
+                            <img src="assets/location.png" alt="Stay&Play">
+                            <img src="assets/heart.png" alt="Stay&Play">
+                        </div>
+                        <div class="desc-area">
+                            <div class="review"></div>
+                            <h3>The Par View Lodge</h3>
+                            <span class="site">Booking.com</span>
+                            <span class="price">From $250</span>
+                            <p>Shuttle Service to the Course - Golf Club Storage - Pet-Friendly - On-Site Dining Options - Sleeps 8</p>
+                            <span class="location">Florida > Orlando</span>
+
+                            <div class="button-area">
+                                <button class="learn-more">LEARN MORE</button>
+                                <button class="see-dates">SEE DATES</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="r13">
+                        <div class="img-area">
+                            <button class="text">50+ GOLF<br>COURSES NEARBY</button>
+                            <img src="assets/eco.png" alt="Stay&Play">
+                            <img src="assets/location.png" alt="Stay&Play">
+                            <img src="assets/heart.png" alt="Stay&Play">
+                        </div>
+                        <div class="desc-area">
+                            <div class="review"></div>
+                            <h3>The Par View Lodge</h3>
+                            <span class="site">Booking.com</span>
+                            <span class="price">From $250</span>
+                            <p>Shuttle Service to the Course - Golf Club Storage - Pet-Friendly - On-Site Dining Options - Sleeps 8</p>
+                            <span class="location">Florida > Orlando</span>
+
+                            <div class="button-area">
+                                <button class="learn-more">LEARN MORE</button>
+                                <button class="see-dates">SEE DATES</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="r21">
+                        <div class="img-area">
+                            <button class="text">50+ GOLF<br>COURSES NEARBY</button>
+                            <img src="assets/eco.png" alt="Stay&Play">
+                            <img src="assets/location.png" alt="Stay&Play">
+                            <img src="assets/heart.png" alt="Stay&Play">
+                        </div>
+                        <div class="desc-area">
+                            <div class="review"></div>
+                            <h3>The Par View Lodge</h3>
+                            <span class="site">Booking.com</span>
+                            <span class="price">From $250</span>
+                            <p>Shuttle Service to the Course - Golf Club Storage - Pet-Friendly - On-Site Dining Options - Sleeps 8</p>
+                            <span class="location">Florida > Orlando</span>
+
+                            <div class="button-area">
+                                <button class="learn-more">LEARN MORE</button>
+                                <button class="see-dates">SEE DATES</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="r22">
+                        <div class="img-area">
+                            <button class="text">50+ GOLF<br>COURSES NEARBY</button>
+                            <img src="assets/eco.png" alt="Stay&Play">
+                            <img src="assets/location.png" alt="Stay&Play">
+                            <img src="assets/heart.png" alt="Stay&Play">
+                        </div>
+                        <div class="desc-area">
+                            <div class="review"></div>
+                            <h3>The Par View Lodge</h3>
+                            <span class="site">Booking.com</span>
+                            <span class="price">From $250</span>
+                            <p>Shuttle Service to the Course - Golf Club Storage - Pet-Friendly - On-Site Dining Options - Sleeps 8</p>
+                            <span class="location">Florida > Orlando</span>
+
+                            <div class="button-area">
+                                <button class="learn-more">LEARN MORE</button>
+                                <button class="see-dates">SEE DATES</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="r23">
+                        <div class="img-area">
+                            <button class="text">50+ GOLF<br>COURSES NEARBY</button>
+                            <img src="assets/eco.png" alt="Stay&Play">
+                            <img src="assets/location.png" alt="Stay&Play">
+                            <img src="assets/heart.png" alt="Stay&Play">
+                        </div>
+                        <div class="desc-area">
+                            <div class="review"></div>
+                            <h3>The Par View Lodge</h3>
+                            <span class="site">Booking.com</span>
+                            <span class="price">From $250</span>
+                            <p>Shuttle Service to the Course - Golf Club Storage - Pet-Friendly - On-Site Dining Options - Sleeps 8</p>
+                            <span class="location">Florida > Orlando</span>
+
+                            <div class="button-area">
+                                <button class="learn-more">LEARN MORE</button>
+                                <button class="see-dates">SEE DATES</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="map">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3357.38317350828!2d90.40819630778275!3d23.79013237609442!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ff901b37b2c919%3A0x8091b0cf2a2fb8cd!2sW3%20Engineers%20Ltd.!5e0!3m2!1sen!2sbd!4v1788633811442!5m2!1sen!2sbd" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                    </div>
+                </div>
+
+                <div class="pages">
+                    <div class="page">
+                        <a href="#" class="inactive">PREVIOUS</a>
+                        <a href="#" class="active">01</a>
+                        <a href="#">02</a>
+                        <a href="#">03</a>
+                        <a href="#">04</a>
+                        <a href="#">05</a>
+                        <a href="#">...</a>
+                        <a href="#">NEXT</a>
+                    </div>
+                    <button class="all-places">VIEW ALL PLACES TO STAY</button>
+                </div>
+
+                <div class="highlights">
+                    <h3>EAGLE CREEK GOLF CLUB HIGHLIGHTS</h3>
+                    <div class="cards">
+                        <div class="card">
+                            <img src="assets/golf.png" alt="Stay&Play">
+                            <h4>Par and Difficulty</h4>
+                            <p>Par 72 (Front 9: Par 36, Back 9: Par 36)</p>
+                            <p>Course Rating: 71.4</p>
+                            <p>Course Slop: 113</p>
+                            <span>Challenging for experts, enjoyable for intermediates, and welcoming for beginners.</span>
+                        </div>
+                        <div class="card">
+                            <img src="assets/measuring-tape.png" alt="Stay&Play">
+                            <h4>Yardage</h4>
+                            <p>7,198 yards from the championship trees</p>
+                            <p>Tee Box Options</p>
+                            <span>Championship: 7,198 yards</span>
+                            <span>Regular: 6,720 yards</span>
+                            <span>Forward: 5,942 yards</span>
+                            <span>Beginner: 5,152 yards</span>
+                        </div>
+                        <div class="card">
+                            <img src="assets/keys.png" alt="Stay&Play">
+                            <h5>Public Course</h5>
+                            <span>No stay required</span>
+                            <img class="img-gap" src="assets/golf-cart.png" alt="Stay&Play">
+                            <h5>Cart Recommended</h5>
+                            <span>Walking allowed</span>
+                        </div>
+                        <div class="card">
+                            <img src="assets/golf-course.png" alt="Stay&Play">
+                            <h4>Course Style</h4>
+                            <span>Parkland</span>
+                            <hr>
+                            <h5>Notable Features</h5>
+                            <span>Tree-lined fairways, undulating greens, and strategically placed bunkers. Water hazards come into play on several holes.</span>
+                        </div>
+                    </div>
+
+                    <div class="more-specs">
+                        <div class="three">
+                            <div class="spec">
+                                <img src="assets/golfing.png" alt="Stay&Play" class="icon">
+                                <div class="desc">
+                                    <h4>18-Hole Championship Course</h4>
+                                    <p>Designed for all skill levels with challenging layouts.</p>
+                                </div>
+                            </div>
+                            <div class="spec">
+                                <img src="assets/clock.png" alt="Stay&Play" class="icon">
+                                <div class="desc">
+                                    <h4>Tee Time Flexibility</h4>
+                                    <p>Convenient booking options to suit your schedules.</p>
+                                </div>
+                            </div>
+                            <div class="spec">
+                                <img src="assets/architect.png" alt="Stay&Play" class="icon">
+                                <div class="desc">
+                                    <h4>Architect and History</h4>
+                                    <p>Designed by renowned architect Ron Garl, the course has hosted regional tournaments.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="three">
+                            <div class="spec">
+                                <img src="assets/building.png" alt="Stay&Play" class="icon">
+                                <div class="desc">
+                                    <h4>Luxury Clubhouse</h4>
+                                    <p>Relax with premium dining, locker rooms, and event spaces.</p>
+                                </div>
+                            </div>
+                            <div class="spec">
+                                <img src="assets/teaching.png" alt="Stay&Play" class="icon">
+                                <div class="desc">
+                                    <h4>Golf Lesson Available</h4>
+                                    <p>Expert instructions for player of all levels.</p>
+                                </div>
+                            </div>
+                            <div class="spec">
+                                <img src="assets/shopping.png" alt="Stay&Play" class="icon">
+                                <div class="desc">
+                                    <h4>Pro Shop</h4>
+                                    <p>Fully Stocked with top-tier gear, apparel, accessories.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="special">
+                    <h4>SPECIAL PACKAGES</h4>
+                    <p>Stay & Play packages include two rounds of golf, a cart, and accommodations at a nearby resort starting at $250 per person.</p>
+                </div>
+
+                <hr class="hr">
+                
+                <h2 class="h2">GUEST REVIEWS FOR EAGLE CREEK GOLF CLUB</h2>
+
+                <div class="reviews">
+                    <div class="review">
+                        <div class="date-star">
+                            <span class="date">JAN 01 2025</span>
+                            <span class="yellow star">★</span>
+                            <span class="yellow star">★</span>
+                            <span class="yellow star">★</span>
+                            <span class="yellow star">★</span>
+                            <span class="grey star">★</span>
+                        </div>
+                        <p>Eagle Creek challenges your strategy and precision, making it a perfect blend of fun and competitive play.</p>
+                        <div class="profile">
+                            <img src="assets/profile.png" alt="Stay&Play">
+                            <span>Golf Pro John Smith</span>
+                        </div>
+                    </div>
+                    <div class="review not-in-small">
+                        <div class="date-star">
+                            <span class="date">JAN 01 2025</span>
+                            <span class="yellow star">★</span>
+                            <span class="yellow star">★</span>
+                            <span class="yellow star">★</span>
+                            <span class="yellow star">★</span>
+                            <span class="grey star">★</span>
+                        </div>
+                        <p>Eagle Creek challenges your strategy and precision, making it a perfect blend of fun and competitive play.</p>
+                        <div class="profile">
+                            <img src="assets/profile.png" alt="Stay&Play">
+                            <span>Golf Pro John Smith</span>
+                        </div>
+                    </div>
+                    <div class="review not-in-small">
+                        <div class="date-star">
+                            <span class="date">JAN 01 2025</span>
+                            <span class="yellow star">★</span>
+                            <span class="yellow star">★</span>
+                            <span class="yellow star">★</span>
+                            <span class="yellow star">★</span>
+                            <span class="grey star">★</span>
+                        </div>
+                        <p>Eagle Creek challenges your strategy and precision, making it a perfect blend of fun and competitive play.</p>
+                        <div class="profile">
+                            <img src="assets/profile.png" alt="Stay&Play">
+                            <span>Golf Pro John Smith</span>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 class="h2">EAGLE CREEK COURSE FEATURES</h2>
+
+                <div class="features">
+                    <div class="feature1">
+                        <h4>Practice Facilities</h4>
+                        <ul>
+                            <li>Driving range with target greens</li>
+                            <li>Putting green</li>
+                            <li>Short game area with sand bunkers</li>
+                            <li>Professional lessons available</li>
+                        </ul>
+
+                    </div>
+                    <div class="feature2">
+                        <h4>Amenities and Services</h4>
+                        <h5>Caddies and Golf Cart Rentals</h5>
+                        <ul>
+                            <li>Availability: Golf carts are equipped with GPS and available for rental. Caddie services are available upon request.</li>
+                            <li>Costs: Cart rentals: $25; Caddie fees: $40/hour.</li>
+                        </ul>
+                        <hr>
+                        <h5>On-Course Food and Beverage</h5>
+                        <ul>
+                            <li>Multiple snack bars and a halfway house are conveniently located. Beverage carts circulate regularly.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h2 class="h2">When is the Best Time of Year to Play at Eagle Creek Golf Club?</h2>
+                <p class="best-time">Fall and Spring are the best seasons to play at Eagle Creek Golf Club. During these months, the weather is mild with minimal rain, providing perfect golfing conditions. Winter is also a great option for those seeking year-round play in Florida's warmer climate.</p>
+
+                <div class="weather">
+                    <div class="days">
+                        <div class="date">
+                            <h3>SUNDAY JAN 19</h3>
+                            <h4>ORLANDO, FLORIDA</h4>
+                        </div>
+                        <div class="vertical-line not-in-small"></div>
+                        <div class="cloud">
+                            <span class="day">SUN</span>
+                            <img src="assets/cloud.png" alt="Stay&Play" class="cloud">
+                            <span class="temperature">-15.2◦C</span>
+                        </div>
+                        <div class="cloud">
+                            <span class="day">SUN</span>
+                            <img src="assets/cloud.png" alt="Stay&Play" class="cloud">
+                            <span class="temperature">-15.2◦C</span>
+                        </div>
+                        <div class="cloud">
+                            <span class="day">SUN</span>
+                            <img src="assets/cloud.png" alt="Stay&Play" class="cloud">
+                            <span class="temperature">-15.2◦C</span>
+                        </div>
+                        <div class="cloud">
+                            <span class="day">SUN</span>
+                            <img src="assets/cloud.png" alt="Stay&Play" class="cloud">
+                            <span class="temperature">-15.2◦C</span>
+                        </div>
+                        <div class="cloud">
+                            <span class="day">SUN</span>
+                            <img src="assets/cloud.png" alt="Stay&Play" class="cloud">
+                            <span class="temperature">-15.2◦C</span>
+                        </div>
+                        <div class="cloud">
+                            <span class="day">SUN</span>
+                            <img src="assets/cloud.png" alt="Stay&Play" class="cloud">
+                            <span class="temperature">-15.2◦C</span>
+                        </div>
+                        <div class="cloud">
+                            <span class="day">SUN</span>
+                            <img src="assets/cloud.png" alt="Stay&Play" class="cloud">
+                            <span class="temperature">-15.2◦C</span>
+                        </div>
+                    </div>
+
+                    <h3>Explore Vancouver's Weather Patterns</h4>
+
+                    <div class="seasons">
+                        <div class="season">
+                            <img src="assets/spring.png" alt="Stay&Play">
+                            <h4>Spring (March to May)</h5>
+                            <p>Ideal for hiking, with blooming wildflowers and mild temperatures ranging from 60°F to 80°F. This is the most popular season, so booking early is recommended.</p>
+                            <hr>
+                            <h5>Average Temperature</h6>
+                            <p>Daytime: 60°F to 80°F<br>Nighttime: 40°F to 55°F</p>
+                        </div>
+                        <div class="season not-in-small">
+                            <img src="assets/summer.png" alt="Stay&Play">
+                            <h4>Summer (June to August)</h5>
+                            <p>Ideal for hiking, with blooming wildflowers and mild temperatures ranging from 60°F to 80°F. This is the most popular season, so booking early is recommended.</p>
+                            <hr>
+                            <h5>Average Temperature</h6>
+                            <p>Daytime: 60°F to 80°F<br>Nighttime: 40°F to 55°F</p>
+                        </div>
+                        <div class="season not-in-small">
+                            <img src="assets/fall.png" alt="Stay&Play">
+                            <h4>Fall (September to November)</h5>
+                            <p>Ideal for hiking, with blooming wildflowers and mild temperatures ranging from 60°F to 80°F. This is the most popular season, so booking early is recommended.</p>
+                            <hr>
+                            <h5>Average Temperature</h6>
+                            <p>Daytime: 60°F to 80°F<br>Nighttime: 40°F to 55°F</p>
+                        </div>
+                        <div class="season not-in-small">
+                            <img src="assets/winter.png" alt="Stay&Play">
+                            <h4>Winter (December to February)</h5>
+                            <p>Ideal for hiking, with blooming wildflowers and mild temperatures ranging from 60°F to 80°F. This is the most popular season, so booking early is recommended.</p>
+                            <hr>
+                            <h5>Average Temperature</h6>
+                            <p>Daytime: 60°F to 80°F<br>Nighttime: 40°F to 55°F</p>
+                        </div>
+                        
+                    </div>
+
+
+
+
+                </div>
+
+                <h2 class="not-in-small not-in-medium">Other Golf Courses Near Eagle Creek Golf Club</h2>
+
+                <div class="other-courses not-in-small not-in-medium">
+                    <div class="course">
+                        <img src="assets/eagle-creek-2.jpg" alt="Stay&Play">
+                        <div class="details">
+                            <h3>Providence Golf Club</h3>
+                            <div class="dist">
+                                <img src="assets/location-black.png" alt="Stay&Play">
+                                <span>6 MILES</span>
+                            </div>
+                            <div class="specs">
+                                <div class="spec">
+                                    <img src="assets/measuring-tape.png" alt="Stay&Play">
+                                    <span>YARDS: 7305</span>
+                                </div>
+                                <div class="spec">
+                                    <img src="assets/golf.png" alt="Stay&Play">
+                                    <span>PAR: 72</span>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="note">
+                                <img src="assets/golf-ball.png" alt="Stay&Play">
+                                <span>Phil Mickelson: Notable wins in the AT&T Pebble Beach Pro-Am.</span>
+                            </div>
+                            <div class="buttons">
+                                <button class="hollow">STAY NEARBY</button>
+                                <button class="filled">MORE INFO</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="course">
+                        <img src="assets/eagle-creek-2.jpg" alt="Stay&Play">
+                        <div class="details">
+                            <h3>Providence Golf Club</h3>
+                            <div class="dist">
+                                <img src="assets/location-black.png" alt="Stay&Play">
+                                <span>6 MILES</span>
+                            </div>
+                            <div class="specs">
+                                <div class="spec">
+                                    <img src="assets/measuring-tape.png" alt="Stay&Play">
+                                    <span>YARDS: 7305</span>
+                                </div>
+                                <div class="spec">
+                                    <img src="assets/golf.png" alt="Stay&Play">
+                                    <span>PAR: 72</span>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="note">
+                                <img src="assets/golf-ball.png" alt="Stay&Play">
+                                <span>Phil Mickelson: Notable wins in the AT&T Pebble Beach Pro-Am.</span>
+                            </div>
+                            <div class="buttons">
+                                <button class="hollow">STAY NEARBY</button>
+                                <button class="filled">MORE INFO</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="course">
+                        <img src="assets/eagle-creek-2.jpg" alt="Stay&Play">
+                        <div class="details">
+                            <h3>Providence Golf Club</h3>
+                            <div class="dist">
+                                <img src="assets/location-black.png" alt="Stay&Play">
+                                <span>6 MILES</span>
+                            </div>
+                            <div class="specs">
+                                <div class="spec">
+                                    <img src="assets/measuring-tape.png" alt="Stay&Play">
+                                    <span>YARDS: 7305</span>
+                                </div>
+                                <div class="spec">
+                                    <img src="assets/golf.png" alt="Stay&Play">
+                                    <span>PAR: 72</span>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="note">
+                                <img src="assets/golf-ball.png" alt="Stay&Play">
+                                <span>Phil Mickelson: Notable wins in the AT&T Pebble Beach Pro-Am.</span>
+                            </div>
+                            <div class="buttons">
+                                <button class="hollow">STAY NEARBY</button>
+                                <button class="filled">MORE INFO</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="navigate not-in-small not-in-medium">
+                    <button class="text inactive">EXPLORE MORE COURSES</button>
+                    <button class="arrow inactive"><</button>
+                    <button class="arrow">></button>
+                </div>
+
+
+
+            </article>
+            <aside>
+                <section class="aside">
+                    <div class="option">
+                        <div class="title">
+                            <img src="assets/bed.png" alt="Stay&Play">
+                            <h2 class="blue">STAY</h2>
+                        </div>
+                        <div class="details">
+                            <div class="info">
+                                <div class="data">
+                                    <h3>800+</h3>
+                                    <p>PLACES TO STAY NEARBY</p>
+                                </div>
+                                <div class="vertical-bar"></div>
+                                <div class="data">
+                                    <P>FROM</P>
+                                    <h3>$300</h3>
+                                </div>
+                            </div>
+                            <button class="blue-button">BOOK A PLACE TO STAY</button>
+                        </div>
+                    </div>
+                    <div class="option">
+                        <div class="title">
+                            <img src="assets/golf-ball-color.png" alt="Stay&Play">
+                            <h2 class="green">PLAY</h2>
+                        </div>
+                        <div class="details">
+                            <div class="info">
+                                <div class="data">
+                                    <P>PEAK</P>
+                                    <h3>$100</h3>
+                                    <p>ROUND</p>
+                                </div>
+                                <div class="vertical-bar"></div>
+                                <div class="data">
+                                    <P>OFF-PEAK</P>
+                                    <h3>$75</h3>
+                                    <P>ROUND</P>
+                                </div>
+                                <div class="vertical-bar"></div>
+                                <div class="data">
+                                    <p>TWILIGHT</p>
+                                    <h3>$60</h3>
+                                    <p>ROUND</p>
+                                </div>
+                            </div>
+                            <button class="green-button">BOOK A TEE TIME</button>
+                        </div>
+                    </div>
+                </section>
+            </aside>
+
+
+        </div>
+    </main>
+
+    <footer>
+        <section class="footer-area">
+            <div class="left">
+                <a href="#">HOME</a>
+                <a href="#">WHERE TO STAY</a>
+                <a href="#">WHERE TO PLAY</a>
+                <a href="#">GROUP TRAVEL</a>
+                <a href="#">TRAVEL BLOG</a>
+                <a href="#">PRIVACY POLICY</a>
+                <a href="#">TERMS</a>
+                <a href="#">SITEMAP</a>
+                <a href="#">USA</a>
+                <a href="#">SCOTLAND</a>
+                <a href="#">PORTUGAL</a>
+                <a href="#">SPAIN</a>
+                <a href="#">IRELAND</a>
+                <a href="#">AUSTRALIA</a>
+                <a href="#">TURKEY</a>
+                <a href="#">SOUTH AFRICA</a>
+                <a href="#">THAILAND</a>
+                <a href="#">NEW ZEALAND</a>
+                <a href="#">UAE</a>
+                <a href="#">CANARY ISLANDS</a>
+                <a href="#">MAURITIUS</a>
+                <a href="#">BERMUDA</a>
+                <a href="#">ARGENTINA</a>
+                <a href="#">BARBADOS</a>
+                <a href="#">MEXICO</a>
+                <a href="#">CANADA</a>
+                <a href="#">CHINA</a>
+                <a href="#">FRANCE</a>
+                <a href="#">MALAYSIA</a>
+                <a href="#">SOUTH KOREA</a>
+                <a href="#">JAPAN</a>
+                <a href="#">INDONESIA</a>
+            </div>
+            <div class="right">
+                <div class="icons">
+                    <a href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 24 24">
+                            <path d="M12,2C6.477,2,2,6.477,2,12c0,5.013,3.693,9.153,8.505,9.876V14.65H8.031v-2.629h2.474v-1.749 c0-2.896,1.411-4.167,3.818-4.167c1.153,0,1.762,0.085,2.051,0.124v2.294h-1.642c-1.022,0-1.379,0.969-1.379,2.061v1.437h2.995 l-0.406,2.629h-2.588v7.247C18.235,21.236,22,17.062,22,12C22,6.477,17.523,2,12,2z"></path>
+                        </svg>
+                    </a>
+
+                    <a href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 24 24">
+                            <path d="M22,3.999c-0.78,0.463-2.345,1.094-3.265,1.276c-0.027,0.007-0.049,0.016-0.075,0.023c-0.813-0.802-1.927-1.299-3.16-1.299 c-2.485,0-4.5,2.015-4.5,4.5c0,0.131-0.011,0.372,0,0.5c-3.353,0-5.905-1.756-7.735-4c-0.199,0.5-0.286,1.29-0.286,2.032 c0,1.401,1.095,2.777,2.8,3.63c-0.314,0.081-0.66,0.139-1.02,0.139c-0.581,0-1.196-0.153-1.759-0.617c0,0.017,0,0.033,0,0.051 c0,1.958,2.078,3.291,3.926,3.662c-0.375,0.221-1.131,0.243-1.5,0.243c-0.26,0-1.18-0.119-1.426-0.165 c0.514,1.605,2.368,2.507,4.135,2.539c-1.382,1.084-2.341,1.486-5.171,1.486H2C3.788,19.145,6.065,20,8.347,20 C15.777,20,20,14.337,20,8.999c0-0.086-0.002-0.266-0.005-0.447C19.995,8.534,20,8.517,20,8.499c0-0.027-0.008-0.053-0.008-0.08 c-0.003-0.136-0.006-0.263-0.009-0.329c0.79-0.57,1.475-1.281,2.017-2.091c-0.725,0.322-1.503,0.538-2.32,0.636 C20.514,6.135,21.699,4.943,22,3.999z"></path>
+                        </svg>
+                    </a>
+
+                    <a href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 24 24">
+                            <path d="M 8 3 C 5.239 3 3 5.239 3 8 L 3 16 C 3 18.761 5.239 21 8 21 L 16 21 C 18.761 21 21 18.761 21 16 L 21 8 C 21 5.239 18.761 3 16 3 L 8 3 z M 18 5 C 18.552 5 19 5.448 19 6 C 19 6.552 18.552 7 18 7 C 17.448 7 17 6.552 17 6 C 17 5.448 17.448 5 18 5 z M 12 7 C 14.761 7 17 9.239 17 12 C 17 14.761 14.761 17 12 17 C 9.239 17 7 14.761 7 12 C 7 9.239 9.239 7 12 7 z M 12 9 A 3 3 0 0 0 9 12 A 3 3 0 0 0 12 15 A 3 3 0 0 0 15 12 A 3 3 0 0 0 12 9 z"></path>
+                        </svg>
+                    </a>
+
+
+                </div>
+                <div class="conversions">
+                    <div class="currency">
+                        <button class="first">USD
+                            <svg
+                                width="12"
+                                height="12"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="M6 9L12 15L18 9"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                        </button>
+                        <div class="footer-conversion-menu">
+                            <button>USD</button>
+                            <button>BDT</button>
+                            <button>EUR</button>
+                        </div>
+                    </div>
+                    <div class="country">
+                        <button class="first">United States
+                            <svg
+                                width="12"
+                                height="12"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="M6 9L12 15L18 9"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+
+                        </button>
+                        <div class="footer-conversion-menu">
+                            <button>United States</button>
+                            <button>Bangladesh</button>
+                            <button>France</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="company-logo">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 320 59"
+                        fill="none"
+                        class="travel-ai-logo"
+                    >
+                        <path d="M33.4531 0L42.8023 48.3245L67.2209 57.1982L33.4531 0Z" fill="currentColor"/>
+                        <path d="M1.32812 58.7133L67.2213 58.7127L20.8723 41.8672L1.32812 58.7133Z" fill="currentColor"/>
+                        <path d="M0 57.9365L37.0083 26.0384L32.3426 1.92188L0 57.9365Z" fill="currentColor"/>
+
+                        <rect x="315.75" y="18.375" width="4.2465" height="30.958" fill="currentColor"/>
+                        <path d="M315.75 8.82812C318.095 8.82812 319.997 10.7293 319.997 13.0749V13.9261H315.75V8.82812Z" fill="currentColor"/>
+
+                        <path d="M100.514 9.97327C101.29 10.7492 101.657 11.6884 101.657 12.7908H88.1412V49.3366H83.8535V12.7908H74.2578C73.1553 12.7908 72.1753 12.3823 71.4402 11.6066C70.6642 10.7898 70.2969 9.8915 70.2969 8.78906H97.6551C98.7984 8.78906 99.7376 9.19733 100.514 9.97327Z" fill="currentColor"/>
+
+                        <path d="M204.153 9.97145C205.296 9.1955 206.603 8.82812 207.991 8.82812L189.249 49.3756L170.547 8.82812C171.976 8.82812 173.283 9.23639 174.467 10.0532C175.651 10.8698 176.468 11.9316 176.999 13.2382L189.249 39.739L201.662 13.1155C202.152 11.7681 203.009 10.7474 204.153 9.97145Z" fill="currentColor"/>
+
+                        <path d="M238.82 49.3362H213.258V8.78906H238.656V12.7497H217.464V26.7554H234.246C234.246 27.8585 233.879 28.7562 233.103 29.5321C232.368 30.3077 231.429 30.6757 230.367 30.6757H217.504V45.3345H238.86L238.82 49.3362Z" fill="currentColor"/>
+
+                        <path d="M249.974 45.3348V13.0356C249.974 11.8513 249.565 10.8716 248.708 10.0547C247.891 9.23821 246.87 8.78906 245.727 8.78906V49.3362H264.715L266.715 45.3348H249.974Z" fill="currentColor"/>
+
+                        <path d="M290.966 8.86719L267.977 55.0499H272.631L290.925 18.1364L299.337 35.1233H291.333C289.945 35.1639 288.842 35.5316 288.026 36.2258C287.209 36.9199 286.597 37.655 286.188 38.4715L285.943 39.0025H301.297L306.442 49.3741H311.097L290.966 8.86719Z" fill="currentColor"/>
+
+                        <path d="M111.208 49.3341V12.8296H120.722C124.315 12.8296 126.929 13.5643 128.521 15.075C130.114 16.586 130.93 18.505 130.93 20.7511C130.93 22.9968 130.073 24.9567 128.358 26.5903C126.643 28.2234 124.07 29.0399 120.681 29.0399H120.028C119.497 29.0399 119.089 29.2444 118.762 29.5708C118.435 29.9382 118.272 30.3056 118.272 30.796C118.272 31.1224 118.354 31.4495 118.599 31.7757L119.62 33.1641L128.358 45.1691C129.297 46.4757 130.522 47.4966 131.951 48.2317C133.172 48.8594 134.512 49.2171 135.895 49.3341H136.576L124.111 32.1843C127.337 31.776 129.991 30.5918 132.073 28.5911C134.197 26.5907 135.218 23.936 135.218 20.5875C135.218 18.4238 134.687 16.4225 133.666 14.6668C132.645 12.9111 131.053 11.4821 128.929 10.4206C126.806 9.35874 124.152 8.82812 120.967 8.82812H106.961V49.3341H111.208Z" fill="currentColor"/>
+
+                        <path d="M169.761 35.1621H161.758C160.369 35.203 159.267 35.5703 158.45 36.2645C157.634 36.959 157.021 37.6937 156.613 38.5106L156.368 39.0412H171.721L176.825 49.3311H181.501L161.431 8.90625L141.32 49.3311H145.934L161.349 18.1755L169.761 35.1621Z" fill="currentColor"/>
+
+                        <rect x="315.75" y="13.9219" width="4.24681" height="1.13475" fill="currentColor"/>
+                    </svg>
+
+                    <svg class="vertical-bar"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 2 30"
+                        width="2"
+                        height="30"
+                    >
+                        <rect
+                            width="2"
+                            height="30"
+                            fill="currentColor"
+                        />
+                    </svg>
+
+                    <div class="slogans">
+                        <p class="slogan">Stay&Play</p>
+                        <p class="slogan">Powered by TravelAi</p>
+                    </div>
+
+                </div>
+                <div class="copyright">
+                    <p>© 2025 StayAndPlay. All Rights Reserved.</p>
+                </div>
+            </div>
+        </section>
+    </footer>
+</body>
+</html>
