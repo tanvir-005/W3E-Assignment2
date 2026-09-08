@@ -9,17 +9,9 @@
     <link rel="shortcut icon" href="assets/logo.png" type="image/x-icon">
 
     <!-- Font: Lato -->
-    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com" rel="stylesheet"> -->
-
-    <link rel="stylesheet" href="/node_modules/hotel-datepicker/dist/css/hotel-datepicker.css">
-
-
-    <link
-        rel="stylesheet"
-        href="/node_modules/hotel-datepicker/dist/css/hotel-datepicker.css"
-    >
+    <link href="https://googleapis.com" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -756,364 +748,76 @@
                     <button class="arrow inactive"><</button>
                     <button class="arrow">></button>
                 </div>
-
-
-
             </article>
 
-
-<aside class="booking-card">
-
-    <!-- PRICE -->
-    <div class="booking-rate">
-        <h3>USD $2026</h3>
-        <p>AVG PER NIGHT</p>
-    </div>
-
-
-    <!-- BOOKING FORM -->
-    <form id="booking-form">
-
-        <!-- DATES -->
-        <div class="booking-dates">
-
-            <!-- CHECK-IN -->
-            <div class="booking-field">
-
-                <label for="check-in">
-                    CHECK-IN
-                </label>
-
-                <div
-                    class="booking-input-wrapper"
-                    id="check-in-wrapper"
-                >
-
-                    <input
-                        type="text"
-                        id="check-in"
-                        name="check-in"
-                        readonly
-                        placeholder="Select date"
-                    >
-
-                    <span class="booking-arrow">
-                        ⌄
-                    </span>
-
+            <aside class="booking-card">
+                <div class="booking-rate">
+                    <h3>USD $2026</h3>
+                    <p>AVG PER NIGHT</p>
                 </div>
 
-            </div>
+                <form id="booking-form">
+                    <div class="booking-dates">
+                        <div class="booking-field">
+                            <label for="check-in-wrapper">CHECK-IN</label>
+                            <button type="button" class="booking-input-wrapper" id="check-in-wrapper">
+                                <span id="check-in">Select date</span>
+                                <svg class="booking-arrow" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M6 9L12 15L18 9"/>
+                                </svg>
+                            </button>
+                        </div>
 
+                        <div class="booking-field">
+                            <label for="check-out-wrapper">CHECK-OUT</label>
+                            <button type="button" class="booking-input-wrapper" id="check-out-wrapper">
+                                <span id="check-out">Select date</span>
+                                <svg class="booking-arrow" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M6 9L12 15L18 9"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
 
-            <!-- CHECK-OUT -->
-            <div class="booking-field">
+                    <input type="text" id="date-range-picker" class="date-range-picker" readonly>
 
-                <label for="check-out">
-                    CHECK-OUT
-                </label>
+                    <div class="booking-guests">
+                        <label for="guest-button">GUESTS</label>
+                        <button type="button" class="guest-button" id="guest-button">
+                            <span id="guest-summary">1 GUEST</span>
+                            <svg class="booking-arrow" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M6 9L12 15L18 9"/>
+                            </svg>
+                        </button>
+                    </div>
 
-                <div
-                    class="booking-input-wrapper"
-                    id="check-out-wrapper"
-                >
+                    <div class="availability-banner" id="availability-banner">
+                        <div class="availability-icon">✓</div>
+                        <span>Dates selected are available</span>
+                    </div>
 
-                    <input
-                        type="text"
-                        id="check-out"
-                        name="check-out"
-                        readonly
-                        placeholder="Select date"
-                    >
+                    <div class="booking-price-summary">
+                        <div class="booking-price-row">
+                            <span>PRICE PER NIGHT</span>
+                            <span id="price-per-night">USD $2026</span>
+                        </div>
 
-                    <span class="booking-arrow">
-                        ⌄
-                    </span>
+                        <div class="booking-price-row total-row">
+                            <span>TOTAL PRICE</span>
+                            <strong id="total-price">USD $2026</strong>
+                        </div>
+                    </div>
 
+                    <button type="submit" class="check-availability">CHECK AVAILABILITY</button>
+
+                    <p class="booking-redirect">You will be redirected to <strong>Booking.com</strong></p>
+                </form>
+
+                <div class="hot-deal">
+                    <span class="fire-icon">🔥</span>
+                    <span>Hot Deal - It has been viewed 30 times today</span>
                 </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- HOTEL DATEPICKER INPUT -->
-        <input
-            type="text"
-            id="date-range-picker"
-            class="date-range-picker"
-            readonly
-        >
-
-
-        <!-- GUESTS -->
-        <div class="booking-guests">
-
-            <label for="guest-button">
-                GUESTS
-            </label>
-
-            <button
-                type="button"
-                class="guest-button"
-                id="guest-button"
-            >
-
-                <span id="guest-summary">
-                    1 GUEST
-                </span>
-
-                <span class="booking-arrow">
-                    ⌄
-                </span>
-
-            </button>
-
-        </div>
-
-
-        <!-- AVAILABILITY -->
-        <div
-            class="availability-banner"
-            id="availability-banner"
-        >
-
-            <div class="availability-icon">
-                ✓
-            </div>
-
-            <span>
-                Dates selected are available
-            </span>
-
-        </div>
-
-
-        <!-- PRICE SUMMARY -->
-        <div class="booking-price-summary">
-
-            <div class="booking-price-row">
-
-                <span>
-                    PRICE PER NIGHT
-                </span>
-
-                <span id="price-per-night">
-                    USD $2026
-                </span>
-
-            </div>
-
-
-            <div class="booking-price-row total-row">
-
-                <span>
-                    TOTAL PRICE
-                </span>
-
-                <strong id="total-price">
-                    USD $2026
-                </strong>
-
-            </div>
-
-        </div>
-
-
-        <!-- BUTTON -->
-        <button
-            type="submit"
-            class="check-availability"
-        >
-            CHECK AVAILABILITY
-        </button>
-
-
-        <p class="booking-redirect">
-
-            You will be redirected to
-
-            <strong>
-                Booking.com
-            </strong>
-
-        </p>
-
-    </form>
-
-
-    <!-- HOT DEAL -->
-    <div class="hot-deal">
-
-        <span class="fire-icon">
-            🔥
-        </span>
-
-        <span>
-            Hot Deal - It has been viewed
-            30 times today
-        </span>
-
-    </div>
-
-</aside>
-
-
-<!-- =========================================
-     GUEST MODAL
-========================================= -->
-
-<div
-    class="guest-modal-overlay"
-    id="guest-modal"
->
-
-    <div class="guest-modal">
-
-        <button
-            type="button"
-            class="guest-modal-close"
-            id="guest-modal-close"
-            aria-label="Close"
-        >
-            ×
-        </button>
-
-
-        <h3>
-            Filters
-        </h3>
-
-
-        <!-- GUESTS -->
-        <div class="guest-row">
-
-            <span>
-                Guests
-            </span>
-
-
-            <div class="counter">
-
-                <button
-                    type="button"
-                    class="counter-button"
-                    data-type="guests"
-                    data-action="minus"
-                >
-                    −
-                </button>
-
-
-                <span
-                    class="counter-value"
-                    id="guests-count"
-                >
-                    1
-                </span>
-
-
-                <button
-                    type="button"
-                    class="counter-button"
-                    data-type="guests"
-                    data-action="plus"
-                >
-                    +
-                </button>
-
-            </div>
-
-        </div>
-
-
-        <!-- INFANTS -->
-        <div class="guest-row">
-
-            <span>
-                Infants
-            </span>
-
-
-            <div class="counter">
-
-                <button
-                    type="button"
-                    class="counter-button"
-                    data-type="infants"
-                    data-action="minus"
-                >
-                    −
-                </button>
-
-
-                <span
-                    class="counter-value"
-                    id="infants-count"
-                >
-                    0
-                </span>
-
-
-                <button
-                    type="button"
-                    class="counter-button"
-                    data-type="infants"
-                    data-action="plus"
-                >
-                    +
-                </button>
-
-            </div>
-
-        </div>
-
-
-        <!-- PETS -->
-        <div class="guest-row">
-
-            <span>
-                Pets
-            </span>
-
-
-            <div class="counter">
-
-                <button
-                    type="button"
-                    class="counter-button"
-                    data-type="pets"
-                    data-action="minus"
-                >
-                    −
-                </button>
-
-
-                <span
-                    class="counter-value"
-                    id="pets-count"
-                >
-                    0
-                </span>
-
-
-                <button
-                    type="button"
-                    class="counter-button"
-                    data-type="pets"
-                    data-action="plus"
-                >
-                    +
-                </button>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
+            </aside>
 
 
         </div>
@@ -1284,13 +988,5 @@
             </div>
         </section>
     </footer>
-
-
-
-    <script src="/node_modules/fecha/dist/fecha.min.js"></script>
-
-    <script src="/node_modules/hotel-datepicker/dist/js/hotel-datepicker.min.js"></script>
-
-    <script src="script.js"></script>
 </body>
 </html>

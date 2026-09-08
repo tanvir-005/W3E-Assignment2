@@ -1367,8 +1367,6 @@ aside {
     
 }
 
-
-
 footer {
     margin-top: 100px;
     height: 80vh;
@@ -1597,523 +1595,188 @@ footer {
     }
 }
 
-/* =========================================
-   HOTEL BOOKING CARD
-========================================= */
-
 .booking-card {
-    background: white;
-
-    border: 1px solid rgba(0, 0, 0, 0.12);
-    border-radius: 8px;
-
-    overflow: visible;
-
-    box-shadow:
-        0 3px 12px rgba(0, 0, 0, 0.08);
+    background: #f8f8f8;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(255, 3, 3, 0.12);
+    height: fit-content;
 }
-
-
-/* =========================================
-   PRICE HEADER
-========================================= */
 
 .booking-rate {
-    padding: 18px 18px 14px;
-
     display: flex;
     align-items: baseline;
-    gap: 8px;
+    gap: 6px;
+    padding: 20px 20px 10px;
 }
-
 
 .booking-rate h3 {
-    margin: 0;
-
-    font-size: 1.25rem;
-    font-weight: 700;
+    font-size: 1.1em;
 }
 
-
-.booking-rate p {
-    margin: 0;
-
-    font-size: 0.65rem;
-
+.booking-rate p,
+.booking-field label,
+.booking-guests label {
     color: var(--lightgrey);
-    font-weight: 600;
+    font-size: 0.55em;
+    font-weight: bold;
 }
-
-
-/* =========================================
-   BOOKING FORM
-========================================= */
 
 #booking-form {
-    padding: 0 14px;
+    padding: 0 20px;
 }
-
-
-/* =========================================
-   DATE FIELDS
-========================================= */
 
 .booking-dates {
-    display: flex;
-
-    gap: 8px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
 }
 
-
-.booking-field {
-    flex: 1;
-
-    min-width: 0;
+.booking-field,
+.booking-guests {
+    position: relative;
 }
-
 
 .booking-field label,
-.booking-guests > label {
-    display: block;
-
-    margin-bottom: 5px;
-
-    font-size: 0.62rem;
-    font-weight: 700;
-
-    color: var(--lightgrey);
+.booking-guests label {
+    position: absolute;
+    top: 8px;
+    left: 12px;
+    z-index: 1;
 }
 
+.booking-input-wrapper,
+.guest-button {
+    width: 100%;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #7d8588;
+    border-radius: 5px;
+    background: transparent;
+    color: var(--primary-dark);
+    font-weight: bold;
+}
 
 .booking-input-wrapper {
-    position: relative;
-
-    height: 44px;
-
-    border: 1px solid rgba(0, 0, 0, 0.25);
-    border-radius: 4px;
-
-    cursor: pointer;
-
-    display: flex;
-    align-items: center;
-}
-
-
-.booking-input-wrapper:hover {
-    border-color: var(--primary-light);
-}
-
-
-.booking-input-wrapper input {
-    width: 100%;
-    height: 100%;
-
-    min-width: 0;
-
-    padding: 0 28px 0 10px;
-
-    border: none;
-    outline: none;
-
-    background: transparent;
-
-    font-size: 0.72rem;
-    font-weight: 600;
-
-    cursor: pointer;
-}
-
-
-.booking-input-wrapper input::placeholder {
-    color: rgba(0, 0, 0, 0.45);
-}
-
-
-.booking-arrow {
-    position: absolute;
-
-    right: 10px;
-
-    pointer-events: none;
-
-    font-size: 1rem;
-    line-height: 1;
-}
-
-
-/* =========================================
-   HIDDEN HOTEL DATEPICKER INPUT
-========================================= */
-
-.date-range-picker {
-    position: absolute;
-
-    width: 1px;
-    height: 1px;
-
-    opacity: 0;
-
-    pointer-events: none;
-}
-
-
-/* =========================================
-   GUEST FIELD
-========================================= */
-
-.booking-guests {
-    margin-top: 12px;
-}
-
-
-.guest-button {
-    position: relative;
-
-    width: 100%;
-    height: 44px;
-
-    padding: 0 32px 0 10px;
-
-    display: flex;
-    align-items: center;
-
-    border: 1px solid rgba(0, 0, 0, 0.25);
-    border-radius: 4px;
-
-    background: white;
-
-    font-size: 0.72rem;
-    font-weight: 600;
-
-    cursor: pointer;
-
+    padding: 16px 12px 4px;
     text-align: left;
 }
 
-
-.guest-button:hover {
-    border-color: var(--primary-light);
+.booking-arrow {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
 }
 
+.booking-arrow path {
+    fill: none;
+    stroke: var(--primary-dark);
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
 
-/* =========================================
-   AVAILABILITY BANNER
-========================================= */
+.booking-guests {
+    margin-top: 5px;
+}
+
+.guest-button {
+    padding: 16px 12px 4px;
+    text-align: left;
+}
+
+.date-range-picker {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
 
 .availability-banner {
-    margin-top: 12px;
-
-    min-height: 42px;
-
-    padding: 8px 10px;
-
     display: flex;
     align-items: center;
-
     gap: 8px;
-
-    background: #eef5f7;
-
-    color: #52636b;
-
-    font-size: 0.68rem;
-
-    border-radius: 4px;
+    margin-top: 5px;
+    padding: 8px;
+    background: #e8eff2;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    color: var(--lightgrey);
+    font-size: 0.7em;
 }
-
 
 .availability-icon {
-    width: 18px;
-    height: 18px;
-
-    flex-shrink: 0;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
+    width: 15px;
+    height: 15px;
+    display: grid;
+    place-items: center;
     border-radius: 50%;
-
-    background: #3ca77a;
-
+    background: var(--gradient-light);
     color: white;
-
-    font-size: 0.7rem;
-    font-weight: 700;
+    font-size: 0.7em;
 }
-
-
-/* =========================================
-   PRICE SUMMARY
-========================================= */
 
 .booking-price-summary {
-    margin-top: 12px;
-
-    border: 1px solid rgba(0, 0, 0, 0.12);
-
+    margin-top: 7px;
+    padding: 8px 12px;
+    border: 1px solid #dfe4e5;
     border-radius: 4px;
-
-    overflow: hidden;
 }
-
 
 .booking-price-row {
-    min-height: 42px;
-
-    padding: 0 12px;
-
     display: flex;
-    align-items: center;
     justify-content: space-between;
-
-    font-size: 0.65rem;
-    font-weight: 600;
-
-    border-bottom:
-        1px solid rgba(0, 0, 0, 0.1);
+    padding: 6px 0;
+    font-size: 0.65em;
+    color: var(--lightgrey);
 }
 
-
-.booking-price-row:last-child {
-    border-bottom: none;
+.total-row {
+    border-top: 1px solid #d9dfe0;
+    color: var(--primary-dark);
 }
 
-
-.booking-price-row strong {
-    font-size: 0.9rem;
+.total-row strong {
+    font-size: 1.5em;
 }
-
-
-/* =========================================
-   CHECK AVAILABILITY BUTTON
-========================================= */
 
 .check-availability {
     width: 100%;
-    height: 42px;
-
-    margin-top: 12px;
-
+    height: 48px;
+    margin-top: 8px;
     border: none;
     border-radius: 4px;
-
     background: var(--second-accent);
-
-    color: #111;
-
-    font-size: 0.68rem;
-    font-weight: 700;
-
-    cursor: pointer;
+    color: var(--primary-dark);
+    font-weight: bold;
+    letter-spacing: 1px;
 }
-
-
-.check-availability:hover {
-    filter: brightness(0.96);
-}
-
-
-/* =========================================
-   REDIRECT TEXT
-========================================= */
 
 .booking-redirect {
-    margin: 10px 0 14px;
-
+    margin: 10px 0;
     text-align: center;
-
     color: var(--lightgrey);
-
-    font-size: 0.62rem;
+    font-size: 0.65em;
 }
-
 
 .booking-redirect strong {
-    color: #244a72;
-
-    font-size: 0.8rem;
+    color: #24557b;
+    font-size: 1.25em;
 }
-
-
-/* =========================================
-   HOT DEAL
-========================================= */
 
 .hot-deal {
-    padding: 12px 14px;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
     gap: 7px;
-
-    background: #eef2f4;
-
-    color: #555;
-
-    font-size: 0.62rem;
-    font-weight: 600;
+    padding: 10px;
+    background: #e7edef;
+    border-top: 1px solid var(--border);
+    font-size: 0.65em;
 }
 
-
-/* =========================================
-   GUEST MODAL
-========================================= */
-
-.guest-modal-overlay {
-    position: fixed;
-
-    inset: 0;
-
-    display: none;
-    align-items: center;
-    justify-content: center;
-
-    padding: 20px;
-
-    background: rgba(0, 0, 0, 0.45);
-
-    z-index: 9999;
+.fire-icon {
+    font-size: 1.4em;
 }
-
-
-.guest-modal-overlay.active {
-    display: flex;
-}
-
-
-.guest-modal {
-    position: relative;
-
-    width: min(100%, 430px);
-
-    padding: 28px;
-
-    background: white;
-
-    border-radius: 8px;
-
-    box-shadow:
-        0 10px 40px rgba(0, 0, 0, 0.25);
-}
-
-
-.guest-modal h3 {
-    margin: 0 0 20px;
-
-    text-align: center;
-
-    font-size: 1.1rem;
-}
-
-
-.guest-modal-close {
-    position: absolute;
-
-    top: 8px;
-    right: 14px;
-
-    border: none;
-
-    background: transparent;
-
-    font-size: 1.7rem;
-
-    cursor: pointer;
-}
-
-
-/* =========================================
-   GUEST COUNTERS
-========================================= */
-
-.guest-row {
-    min-height: 58px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    border-bottom:
-        1px solid rgba(0, 0, 0, 0.1);
-}
-
-
-.guest-row:last-child {
-    border-bottom: none;
-}
-
-
-.counter {
-    display: flex;
-    align-items: center;
-
-    gap: 12px;
-}
-
-
-.counter-button {
-    width: 30px;
-    height: 30px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border: none;
-    border-radius: 4px;
-
-    background: var(--primary-light);
-
-    font-size: 1rem;
-
-    cursor: pointer;
-}
-
-
-.counter-button:disabled {
-    opacity: 0.45;
-
-    cursor: not-allowed;
-}
-
-
-.counter-value {
-    min-width: 18px;
-
-    text-align: center;
-
-    font-weight: 600;
-}
-
-
-/* =========================================
-   DATEPICKER LAYER
-========================================= */
-
-.datepicker {
-    position: fixed;
-
-    top: 50%;
-    left: 50%;
-
-    transform: translate(-50%, -50%);
-
-    z-index: 10000;
-
-    max-width: calc(100vw - 30px);
-
-    overflow: auto;
-}
-
-
-
-
-
-
-
-
-
