@@ -1,0 +1,30 @@
+{
+  "name": "assignment2",
+  "version": "1.0.0",
+  "description": "<!-- **The webpage is responsive across mobile, tablet and desktop. The breakpoints are: 768px and 1024px**",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tanvir-005/W3E-Assignment2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/tanvir-005/W3E-Assignment2/issues"
+  },
+  "homepage": "https://github.com/tanvir-005/W3E-Assignment2#readme",
+  "dependencies": {
+    "express": "^5.2.1",
+    "fecha": "^4.2.3",
+    "hotel-datepicker": "^4.13.0"
+  }
+}
