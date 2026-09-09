@@ -260,8 +260,12 @@ article {
 
 .images {
     height: 70vh;
+    position: relative;
     @media (max-width: 1024px) {
         height: 50vh;
+        .view-all {
+            display: none;
+        }
     }
     display: grid;
     grid-template-columns: 5fr 2fr;
@@ -269,6 +273,18 @@ article {
     border-radius: 10px;
     /* background-color: red; */
     overflow: hidden;
+
+    .view-all {
+        position: absolute;
+        bottom: 18px;
+        right: 24px;
+        height: 32px;
+        padding: 0 18px;
+        border-radius: 50rem;
+        border: 2px solid white;
+        color: white;
+        background-color: rgba(0, 0, 0, 0.1);
+    }
 }
 
 .left-img {
