@@ -219,6 +219,21 @@ updateGuestUI();
 
 
 
+const descriptionToggle = document.querySelector(".description-toggle");
+const descriptionWrapper = document.querySelector(".description-wrapper");
+
+if (descriptionToggle && descriptionWrapper) {
+    descriptionToggle.addEventListener("click", function () {
+        const expanded = descriptionWrapper.classList.toggle("expanded");
+        descriptionToggle.setAttribute("aria-expanded", String(expanded));
+
+        const toggleLabel = descriptionToggle.querySelector(".toggle-label");
+        if (toggleLabel) {
+            toggleLabel.textContent = expanded ? "COLLAPSE" : "READ MORE";
+        }
+    });
+}
+
 const viewAllImagesButton = document.getElementById('view-all');
 const allImagesModal = document.getElementById('all-images');
 
@@ -261,3 +276,5 @@ allImagesModal.addEventListener("click", function (event) {
         allImagesModal.style.display = "none";
     }
 });
+
+

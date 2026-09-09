@@ -323,14 +323,48 @@ article {
 
 .details {
     padding: 12px 0;
-    p, a {
-        display: inline;
-        color: var(--lightgrey);
-        font-size: 0.8em;
+
+    .description-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
     }
 
-    a {
+    .description-text,
+    .description-extra {
+        color: var(--lightgrey);
+        font-size: 0.8em;
+        line-height: 1.7;
+    }
+
+    .description-extra {
+        display: none;
+    }
+
+    .description-wrapper.expanded .description-extra {
+        display: block;
+    }
+
+    .description-toggle {
+        border: none;
+        background: transparent;
+        padding: 0;
+        width: fit-content;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--lightgrey);
+        font-size: 0.8em;
         text-decoration: underline;
+        cursor: pointer;
+    }
+
+    .description-toggle svg {
+        transition: transform 0.2s ease;
+    }
+
+    .description-wrapper.expanded .description-toggle svg {
+        transform: rotate(180deg);
     }
 }
 

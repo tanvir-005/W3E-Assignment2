@@ -9,5 +9,7 @@
 09. Built a Practice API /404
 10. API Design: /get-property
 11. Designed another: /images
-12. API call: View all Images
-13. Fix View all images Modal
+12. /images receives ?count=x
+13. API call: View all Images
+14. Fix View all images Modal
+15. 

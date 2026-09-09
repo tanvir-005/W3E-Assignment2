@@ -147,24 +147,32 @@
                     </section>
                 </section>
                 <section class="details">
-                    <p>Eagle Creek Golf Club combines scenic views with a championship-level course that offers a memorable golfing experience. Nestled amidst lush landscapes and serene water features, this course is known for its challenging design and exceptional playing conditions, making it a must-play destination for golf enthusiasts.</p>
-                    <a href="#">READ MORE
-                        <svg
-                            width="12"
-                            height="12"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                        >
-                            <path
-                                d="M6 9L12 15L18 9"
-                                stroke="currentColor"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                            />
-                        </svg>
-                    </a>
+                    <div class="description-wrapper">
+                        <p class="description-text">
+                            Eagle Creek Golf Club combines scenic views with a championship-level course that offers a memorable golfing experience. Nestled amidst lush landscapes and serene water features, this course is known for its challenging design and exceptional playing conditions, making it a must-play destination for golf enthusiasts.
+                        </p>
+                        <div class="description-extra" aria-hidden="true">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ut lacus mauris. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse sed lectus tellus. Nam sed vulputate eros. Ut ut ligula id lorem mattis elementum. Donec fringilla quam vel sapien porttitor vestibulum. Mauris mattis auctor accumsan. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ut lacus mauris. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse sed lectus tellus. Nam sed vulputate eros. Ut ut ligula id lorem mattis elementum. Donec fringilla quam vel sapien porttitor vestibulum. Mauris mattis auctor accumsan. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ut lacus mauris. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse sed lectus tellus. Nam sed vulputate eros. Ut ut ligula id lorem mattis elementum. Donec fringilla quam vel sapien porttitor vestibulum. Mauris mattis auctor accumsan.
+                        </div>
+                        <button class="description-toggle" type="button" aria-expanded="false">
+                            <span class="toggle-label">READ MORE</span>
+                            <svg
+                                width="12"
+                                height="12"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="M6 9L12 15L18 9"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                        </button>
+                    </div>
                 </section>
 
                 <div class="course-specs">
@@ -190,7 +198,12 @@
                 <section class="options">
                     <h2 class="h2">Find the Perfect Stay Near the Eagle Creek Golf Club in Orlando, FL</h2>
                     <div class="filters">
-                        <button class="filter">STAY WITHIN 10 MILES <svg
+                        <select id="property-sort" class="filter">
+                            <option value="most-popular">Most Popular</option>
+                            <option value="highest-price">Highest Price</option>
+                            <option value="lowest-price">Lowest Price</option>
+                        </select>
+                        <button class="filter not-in-small">STAY WITHIN 10 MILES <svg
                                 width="12"
                                 height="12"
                                 viewBox="0 0 24 24"
@@ -204,8 +217,9 @@
                                     stroke-linecap="round"
                                     stroke-linejoin="round"
                                 />
-                            </svg></button>
-                        <button class="filter">PROPERTY TYPE <svg
+                            </svg>
+                        </button>
+                        <button class="filter not-in-small">PROPERTY TYPE <svg
                                 width="12"
                                 height="12"
                                 viewBox="0 0 24 24"
@@ -219,8 +233,9 @@
                                     stroke-linecap="round"
                                     stroke-linejoin="round"
                                 />
-                            </svg></button>
-                        <button class="filter">2 BEDROOM <svg
+                            </svg>
+                        </button>
+                        <button class="filter not-in-medium">2 BEDROOM <svg
                                 width="12"
                                 height="12"
                                 viewBox="0 0 24 24"
@@ -234,22 +249,8 @@
                                     stroke-linecap="round"
                                     stroke-linejoin="round"
                                 />
-                            </svg></button>
-                        <button class="filter">MOST POPULAR <svg
-                                width="12"
-                                height="12"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path
-                                    d="M6 9L12 15L18 9"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                />
-                            </svg></button>
+                            </svg>
+                        </button>
                     </div>
                 </section>
 
