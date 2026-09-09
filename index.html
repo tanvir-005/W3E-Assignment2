@@ -12,6 +12,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
     <link href="https://googleapis.com" rel="stylesheet">
+
+    <link rel="stylesheet" href="node_modules/hotel-datepicker/dist/css/hotel-datepicker.css">
 </head>
 <body>
     <header>
@@ -819,6 +821,52 @@
                 </div>
             </aside>
 
+            <div class="datepicker-overlay" id="datepicker-overlay"></div>
+
+            <div class="guest-modal" id="guest-modal">
+                <div class="guest-modal-content">
+                    <button type="button" class="guest-modal-close" id="guest-modal-close" aria-label="Close">×</button>
+                    <h3>GUESTS</h3>
+
+                    <div class="guest-row">
+                        <div class="guest-info">
+                            <strong>Guests</strong>
+                            <span>Adults</span>
+                        </div>
+                        <div class="counter">
+                            <button type="button" class="counter-button" data-type="guests" data-action="minus">−</button>
+                            <span class="counter-number" id="guests-count">1</span>
+                            <button type="button" class="counter-button" data-type="guests" data-action="plus">+</button>
+                        </div>
+                    </div>
+
+                    <div class="guest-row">
+                        <div class="guest-info">
+                            <strong>Children</strong>
+                            <span>Ages 0–17</span>
+                        </div>
+                        <div class="counter">
+                            <button type="button" class="counter-button" data-type="children" data-action="minus">−</button>
+                            <span class="counter-number" id="children-count">0</span>
+                            <button type="button" class="counter-button" data-type="children" data-action="plus">+</button>
+                        </div>
+                    </div>
+
+                    <div class="guest-row">
+                        <div class="guest-info">
+                            <strong>Pets</strong>
+                            <span>Bringing pets?</span>
+                        </div>
+                        <div class="counter">
+                            <button type="button" class="counter-button" data-type="pets" data-action="minus">−</button>
+                            <span class="counter-number" id="pets-count">0</span>
+                            <button type="button" class="counter-button" data-type="pets" data-action="plus">+</button>
+                        </div>
+                    </div>
+
+                    <button type="button" class="guest-done-button" id="guest-done-button">DONE</button>
+                </div>
+            </div>
 
         </div>
     </main>
@@ -988,5 +1036,12 @@
             </div>
         </section>
     </footer>
+
+<script src="node_modules/fecha/dist/fecha.min.js"></script>
+
+<script src="node_modules/hotel-datepicker/dist/js/hotel-datepicker.min.js"></script>
+
+<script src="script.js"></script>
+
 </body>
 </html>

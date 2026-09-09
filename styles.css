@@ -1780,3 +1780,142 @@ footer {
 .fire-icon {
     font-size: 1.4em;
 }
+
+.datepicker-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    /* background: rgba(255, 0, 0, 1); */
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.2s;
+}
+
+.datepicker-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.guest-modal {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 1005;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.2s;
+}
+
+.guest-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.guest-modal-content {
+    width: min(430px, 100%);
+    position: relative;
+    background: white;
+    border-radius: 10px;
+    padding: 25px;
+    box-sizing: border-box;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.guest-modal-content h3 {
+    margin: 0 0 20px;
+    color: var(--primary-dark);
+}
+
+.guest-modal-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    border: none;
+    background: transparent;
+    color: var(--primary-dark);
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.guest-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.guest-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.guest-info strong {
+    color: var(--primary-dark);
+}
+
+.guest-info span {
+    color: var(--lightgrey);
+    font-size: 0.75em;
+}
+
+.counter {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.counter-button {
+    width: 34px;
+    height: 34px;
+    border: 1px solid #7d8588;
+    border-radius: 50%;
+    background: white;
+    color: var(--primary-dark);
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.counter-button:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+.counter-number {
+    min-width: 20px;
+    text-align: center;
+    font-weight: bold;
+    color: var(--primary-dark);
+}
+
+.guest-done-button {
+    width: 100%;
+    height: 45px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 5px;
+    background: var(--second-accent);
+    color: var(--primary-dark);
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+.datepicker {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    z-index: 1001 !important;
+    transform: translate(-50%, -50%);
+}
+
+.datepicker-overlay {
+    z-index: 1000;
+}
