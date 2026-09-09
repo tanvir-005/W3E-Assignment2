@@ -1802,7 +1802,7 @@ footer {
     inset: 0;
     background: rgba(0, 0, 0, 0.45);
     /* background: rgba(255, 0, 0, 1); */
-    z-index: 999;
+    z-index: 2;
     opacity: 0;
     visibility: hidden;
     transition: 0.2s;
@@ -1821,7 +1821,7 @@ footer {
     justify-content: center;
     padding: 20px;
     background: rgba(0, 0, 0, 0.45);
-    z-index: 1005;
+    z-index: 4;
     opacity: 0;
     visibility: hidden;
     transition: 0.2s;
@@ -1928,10 +1928,41 @@ footer {
     position: fixed !important;
     top: 50% !important;
     left: 50% !important;
-    z-index: 1001 !important;
+    z-index: 3 !important;
     transform: translate(-50%, -50%);
 }
 
 .datepicker-overlay {
-    z-index: 1000;
+    z-index: 2;
+}
+
+.all-images {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    width: 100vw;
+    max-height: 100vh;
+    overflow-y: auto;
+    background-color: rgba(0, 0, 0, 0.7);
+
+    img {
+        width: min(100%, 1000px);
+        height: auto;
+        padding: 9px 18px;
+        background-color: white;
+    }
+
+    button {
+        position: fixed;
+        top: 18px;
+        width: 32px;
+        height: 32px;
+        border-radius: 50rem;
+        border: 2px solid white;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white; 
+        font-size: 1em;
+    }
 }

@@ -61,7 +61,7 @@ const datepicker = new HotelDatepicker(dateRangePicker, {
     minNights: 1,
     selectForward: true,
     autoClose: true,
-    showTopbar: false,
+    showTopbar: true,
     container: document.body,
 
     onSelectRange: function () {
@@ -214,3 +214,50 @@ pricePerNight.textContent = formatPrice(PRICE_PER_NIGHT);
 totalPrice.textContent = formatPrice(PRICE_PER_NIGHT);
 
 updateGuestUI();
+
+
+
+
+
+const viewAllImagesButton = document.getElementById('view-all');
+const allImagesModal = document.getElementById('all-images');
+
+viewAllImagesButton.addEventListener("click", async function () {
+    allImagesModal.style.display = 'flex';
+    allImagesModal.style.flexDirection = 'column';
+    // allImagesModal.style.justifyContent = 'center';
+    allImagesModal.style.alignItems = 'center';
+
+    allImagesModal.innerHTML = '<p style="color: white;">Loading images...</p>';
+
+    try {
+        const response = await fetch('/images');
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const imageUrls = await response.json();
+
+        allImagesModal.innerHTML = imageUrls
+            .map(url => `<img src="${url}" alt="Gallery Image" class="modal-img" />`)
+            .join('');
+
+        allImagesModal.innerHTML += `<button class="close-modal" id="close-modal" aria-label="Close modal">&times;</button>`;
+
+        const closeButton = document.getElementById('close-modal');
+
+        closeButton.addEventListener("click", function () {
+            allImagesModal.style.display = "none";
+        });
+
+    } catch (error) {
+        console.error('Failed to load images:', error);
+        allImagesModal.innerHTML = '<p style="color: white;">Failed to load images. Please try again.</p>';
+    }
+});
+
+allImagesModal.addEventListener("click", function (event) {
+    if (event.target === allImagesModal) {
+        allImagesModal.style.display = "none";
+    }
+});

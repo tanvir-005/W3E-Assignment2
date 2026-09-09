@@ -1,0 +1,13 @@
+01. Fixed the Booking from UI
+02. Added base price to $2026
+03. Total Price = base * days
+04. Guests, Children and Pets
+05. Guest Modal with checking
+06. Hotel Date Picker Package
+07. Modal of Hotel Datepicker
+08. Built a Practice API /dev
+09. Built a Practice API /404
+10. API Design: /get-property
+11. Designed another: /images
+12. API call: View all Images
+13. Fix View all images Modal
