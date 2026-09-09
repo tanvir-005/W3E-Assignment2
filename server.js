@@ -3,8 +3,10 @@ const path = require("path");
 const fs = require("fs");
 
 const app = express();
-
 const PORT = 3000;
+
+app.use(express.static(__dirname));
+app.use("/node_modules", express.static(path.join(__dirname, "node_modules")));
 
 app.get("/get-property", (req, res) => {
     let file = "most_popular.json";
@@ -27,18 +29,22 @@ app.get("/images", (req, res) => {
     res.json(data.images.slice(-img_count));
 });
 
-// TEST API -------- O B S O L E T E -------------
+// TEST APIs ------ O B S O L E T E -------------------
 app.get("/dev", (req, res) => {
     res.json({data: {
         "name": "MD. TANVIR AHMED SIDDIQUE",
         "Designation": "SWE INTERN",
         "Organization": "W3 Engineers Ltd."}});
 });
-// -----------------------------------------------
 
-app.use(express.static(__dirname));
+app.get('/404', (req, res) => {
+    res.status(404).sendFile(path.join(__dirname, 'others', '404.html'));
+});
 
-app.use("/node_modules", express.static(path.join(__dirname, "node_modules")));
+app.use((req, res) => {
+    res.redirect('/404');
+});
+// ----------------------------------------------------
 
 app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}`);
