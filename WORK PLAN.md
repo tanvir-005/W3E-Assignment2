@@ -64,7 +64,7 @@
 - Use the required image service:
     `https://beta.imgservice.rentbyowner.com/640x300/`
 
-## 6. Favorites [IN PROGRESS]
+## 6. Favorites [DONE]
 
 - Make the Favorite/Heart icon toggle to a red active state.
 - Store each property ID in local storage.
@@ -78,7 +78,7 @@
 - Hovering a property tile highlights its map marker.
 - Clicking a map marker highlights its property tile.
 
-## 8. Validation
+## 8. Validation [INPROGRESS]
 
 - Do not commit the Google Maps API key.
 - Exclude the API key using `.gitignore`.

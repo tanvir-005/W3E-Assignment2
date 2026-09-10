@@ -24,6 +24,8 @@
     --lightgrey: #929292;
 
     --border: #C3DAD7;
+
+    --heart-red: #ff1131;
 }
 
 *, *:hover {
@@ -693,8 +695,8 @@ box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
 }
 
 .favorite-button.is-favorite {
-    background-color: var(--medium);
-    border-color: var(--medium);
+    background-color: var(--heart-red);
+    border-color: var(--heart-red);
 }
 
 .desc-area {
@@ -2284,5 +2286,37 @@ footer {
         font-size: 0.75em;
         line-height: 1;
         z-index: 5;
+    }
+}
+
+.top-images-arrow {
+    display: none;
+}
+
+@media (max-width: 1024px) {
+    .top-images-arrow {
+        display: flex;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 5;
+        width: 36px;
+        height: 36px;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        border-radius: 50%;
+        background-color: rgba(0, 0, 0, 0.45);
+        color: white;
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+    .top-images-prev {
+        left: 10px;
+    }
+
+    .top-images-next {
+        right: 10px;
     }
 }

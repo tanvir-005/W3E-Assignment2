@@ -270,6 +270,17 @@ function updateTopDots(index) {
     }
 }
 
+const topImagesPrev = document.getElementById("top-images-prev");
+const topImagesNext = document.getElementById("top-images-next");
+
+topImagesPrev.addEventListener("click", () => {
+    goToTopImage(topImageIndex - 1);
+});
+
+topImagesNext.addEventListener("click", () => {
+    goToTopImage(topImageIndex + 1);
+});
+
 function goToTopImage(index) {
     topImageIndex = (index + topImageUrls.length) % topImageUrls.length;
     topImagesTrack.scrollTo({ left: topImageIndex * topImagesTrack.clientWidth, behavior: "smooth" });
@@ -299,17 +310,40 @@ topImagesTrack.addEventListener("scroll", () => {
 
 loadTopImages();
 
+function closeImagesModal() {
+    allImagesModal.style.display = "none";
+    document.body.style.overflow = "";
+}
+
 viewAllImagesButton.addEventListener("click", () => {
+    document.body.style.overflow = "hidden";
+
     allImagesModal.style.display = "flex";
     allImagesModal.style.flexDirection = "column";
     allImagesModal.style.alignItems = "center";
-    allImagesModal.innerHTML = topImageUrls.map(url => `<img src="${url}" alt="Gallery Image" class="modal-img">`).join("");
-    allImagesModal.innerHTML += `<button class="close-modal" id="close-modal" aria-label="Close modal">&times;</button>`;
-    document.getElementById("close-modal").addEventListener("click", () => allImagesModal.style.display = "none");
+
+    allImagesModal.innerHTML =
+        topImageUrls
+            .map(url => `<img src="${url}" alt="Gallery Image" class="modal-img">`)
+            .join("");
+
+    allImagesModal.innerHTML += `
+        <button
+            class="close-modal"
+            id="close-modal"
+            aria-label="Close modal"
+        >&times;</button>
+    `;
+
+    document
+        .getElementById("close-modal")
+        .addEventListener("click", closeImagesModal);
 });
 
 allImagesModal.addEventListener("click", event => {
-    if (event.target === allImagesModal) allImagesModal.style.display = "none";
+    if (event.target === allImagesModal) {
+        closeImagesModal();
+    }
 });
 
 /* Nearby Properties */
@@ -423,7 +457,9 @@ function getPropertyApiUrl(sort, limit) {
 
     params.set("limit", limit);
 
-    if (sort === "highest-price") {
+    if (sort === "most-popular") {
+        params.set("most-popular", "true");
+    } else if (sort === "highest-price") {
         params.set("highest-price", "true");
     } else if (sort === "lowest-price") {
         params.set("lowest-price", "true");
