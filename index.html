@@ -404,7 +404,7 @@
 </div>
 
 <div class="map">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3357.38317350828!2d90.40819630778275!3d23.79013237609442!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ff901b37b2c919%3A0x8091b0cf2a2fb8cd!2sW3%20Engineers%20Ltd.!5e0!3m2!1sen!2sbd!4v1788633811442!5m2!1sen!2sbd" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    <div id="property-map"></div>
 </div>
 
 </div>
@@ -1077,6 +1077,12 @@
 <script src="node_modules/hotel-datepicker/dist/js/hotel-datepicker.min.js"></script>
 
 <script src="script.js"></script>
+
+<script
+    src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initPropertyMap"
+    async
+    defer>
+</script>
 
 </body>
 </html>

@@ -315,6 +315,13 @@ allImagesModal.addEventListener("click", event => {
 /* Nearby Properties */
 
 const propertySort = document.getElementById("property-sort");
+let propertyMap = null;
+let propertyMarkers = [];
+let propertyData = [];
+let selectedPropertyIndex = -1;
+let lockedPropertyIndex = -1;
+let hoveredPropertyIndex = -1;
+
 const propertyCards = document.querySelectorAll(
     ".carousel-track > .r11, " +
     ".carousel-track > .r12, " +
@@ -455,6 +462,32 @@ function showPropertyCard(card) {
     card.style.display = "";
 }
 
+function initPropertyMap() {
+    const mapElement = document.getElementById("property-map");
+
+    if (!mapElement) return;
+
+    propertyMap = new google.maps.Map(mapElement, {
+        center: {
+            lat: 28.5383,
+            lng: -81.3792
+        },
+        zoom: 10,
+        mapTypeControl: false,
+        streetViewControl: false,
+        fullscreenControl: true,
+        gestureHandling: "greedy"
+    });
+
+    /*
+     * If properties have already loaded before Google Maps finished
+     * loading, render them now.
+     */
+    if (propertyData.length > 0) {
+        renderPropertyMarkers(propertyData);
+    }
+}
+
 async function loadProperties(sort = "most-popular") {
     const limit = getPropertyLimit();
 
@@ -467,9 +500,13 @@ async function loadProperties(sort = "most-popular") {
 
         const properties = await response.json();
 
+        const visibleProperties = properties.slice(0, limit);
+
+        propertyData = visibleProperties;
+
         propertyCards.forEach(clearPropertyCard);
 
-        properties.slice(0, limit).forEach((item, index) => {
+        visibleProperties.forEach((item, index) => {
             const card = propertyCards[index];
 
             if (!card) return;
@@ -477,6 +514,21 @@ async function loadProperties(sort = "most-popular") {
             updatePropertyCard(card, item);
             showPropertyCard(card);
         });
+
+        /*
+        * Reset selected state after a new sort/API result.
+        */
+        selectedPropertyIndex = -1;
+
+        propertyCards.forEach(card => {
+            card.classList.remove("map-selected");
+        });
+
+        /*
+        * Rebuild markers from exactly the same properties
+        * used for the cards.
+        */
+        renderPropertyMarkers(propertyData);
 
         /*
          * Reset mobile carousel position after changing the
@@ -515,14 +567,14 @@ window.addEventListener("resize", function () {
     }
 });
 
-loadProperties(propertySort.value);
 
 const resortTrack = document.querySelector(".carousel-track");
 const resortPrev = document.querySelector(".carousel-prev");
 const resortNext = document.querySelector(".carousel-next");
 const resortDots = document.querySelectorAll(".carousel-dot");
-
 let resortIndex = 0;
+loadProperties(propertySort.value);
+
 
 function getVisiblePropertyCount() {
     return getPropertyLimit();
@@ -575,4 +627,231 @@ resortTrack.addEventListener("scroll", function () {
             dot.classList.toggle("active", i === resortIndex);
         });
     }
+});
+
+function renderPropertyMarkers(properties) {
+    if (!propertyMap || !window.google?.maps) return;
+
+    // Remove old markers
+    propertyMarkers.forEach(marker => {
+        if (marker) marker.setMap(null);
+    });
+
+    propertyMarkers = [];
+
+    const bounds = new google.maps.LatLngBounds();
+
+    properties.forEach((item, index) => {
+        const lat = Number(item.GeoInfo?.Lat);
+        const lng = Number(item.GeoInfo?.Lng);
+
+        if (!Number.isFinite(lat) || !Number.isFinite(lng)) return;
+
+        const marker = new google.maps.Marker({
+            position: { lat, lng },
+            map: propertyMap,
+            icon: createMarkerIcon(false),
+            title: item.Property?.PropertyName || `Property ${index + 1}`
+        });
+
+        marker.addListener("click", () => {
+            // Clicking the already-locked marker releases it.
+            if (lockedPropertyIndex === index) {
+                lockedPropertyIndex = -1;
+                hoveredPropertyIndex = -1;
+                selectedPropertyIndex = -1;
+
+                propertyMarkers.forEach(marker => {
+                    if (!marker) return;
+
+                    marker.setIcon(createMarkerIcon(false));
+                    marker.setZIndex(undefined);
+                });
+
+                propertyCards.forEach(card => {
+                    card.classList.remove("map-selected");
+                });
+
+                return;
+            }
+
+            // Clicking another marker creates a new lock.
+            selectProperty(index, {
+                centerMap: true,
+                scrollCard: true
+            });
+        });
+
+        propertyMarkers[index] = marker;
+
+        bounds.extend({ lat, lng });
+    });
+
+    if (!bounds.isEmpty()) {
+        propertyMap.fitBounds(bounds);
+
+        google.maps.event.addListenerOnce(
+            propertyMap,
+            "bounds_changed",
+            () => {
+                if (propertyMap.getZoom() > 15) {
+                    propertyMap.setZoom(15);
+                }
+            }
+        );
+    }
+}
+
+function createMarkerIcon(isSelected = false) {
+    const fill = isSelected ? "#93D99A" : "#71D0E6";
+
+    return {
+        url: "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(`
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 width="42"
+                 height="52"
+                 viewBox="0 0 42 52">
+
+                <path
+                    d="M21 2
+                       C10.5 2 2 10.5 2 21
+                       C2 34.5 21 50 21 50
+                       C21 50 40 34.5 40 21
+                       C40 10.5 31.5 2 21 2Z"
+                    fill="${fill}"
+                    stroke="#222f24"
+                    stroke-width="2.5"/>
+
+                <circle
+                    cx="21"
+                    cy="21"
+                    r="6"
+                    fill="#222f24"/>
+            </svg>
+        `),
+        scaledSize: new google.maps.Size(42, 52),
+        anchor: new google.maps.Point(21, 50)
+    };
+}
+
+function selectProperty(index, options = {}) {
+    const {
+        centerMap = false,
+        scrollCard = false
+    } = options;
+
+    if (!propertyData[index]) return;
+
+    // Clicking a card/marker creates a new locked selection.
+    lockedPropertyIndex = index;
+    hoveredPropertyIndex = -1;
+    selectedPropertyIndex = index;
+
+    updatePropertySelection(index);
+
+    if (centerMap && propertyMarkers[index]) {
+        const position = propertyMarkers[index].getPosition();
+
+        if (position) {
+            propertyMap.panTo(position);
+        }
+    }
+
+    if (scrollCard) {
+        const card = propertyCards[index];
+
+        if (card) {
+            card.scrollIntoView({
+                behavior: "smooth",
+                block: "nearest",
+                inline: "nearest"
+            });
+        }
+    }
+}
+
+function updatePropertySelection(index) {
+    selectedPropertyIndex = index;
+
+    propertyMarkers.forEach((marker, markerIndex) => {
+        if (!marker) return;
+
+        const isSelected = markerIndex === index;
+
+        marker.setIcon(createMarkerIcon(isSelected));
+
+        marker.setZIndex(
+            isSelected
+                ? google.maps.Marker.MAX_ZINDEX + 1
+                : undefined
+        );
+    });
+
+    propertyCards.forEach((card, cardIndex) => {
+        card.classList.toggle(
+            "map-selected",
+            cardIndex === index
+        );
+    });
+}
+
+propertyCards.forEach((card, index) => {
+
+    card.addEventListener("mouseenter", () => {
+        if (!propertyMarkers[index]) return;
+
+        /*
+         * If this is a different card from the currently
+         * locked selection, the lock is released.
+         */
+        if (
+            lockedPropertyIndex !== -1 &&
+            lockedPropertyIndex !== index
+        ) {
+            lockedPropertyIndex = -1;
+        }
+
+        hoveredPropertyIndex = index;
+
+        updatePropertySelection(index);
+    });
+
+    card.addEventListener("mouseleave", () => {
+
+        /*
+         * Do not release the selection just because the mouse
+         * left the card.
+         *
+         * If there is a locked selection, keep it.
+         */
+        if (lockedPropertyIndex !== -1) {
+            updatePropertySelection(lockedPropertyIndex);
+            hoveredPropertyIndex = -1;
+            return;
+        }
+
+        /*
+         * No locked selection means this was only a hover.
+         * Release it completely.
+         */
+        if (hoveredPropertyIndex === index) {
+            hoveredPropertyIndex = -1;
+            selectedPropertyIndex = -1;
+
+            propertyMarkers.forEach(marker => {
+                if (!marker) return;
+
+                marker.setIcon(createMarkerIcon(false));
+                marker.setZIndex(undefined);
+            });
+
+            propertyCards.forEach(propertyCard => {
+                propertyCard.classList.remove("map-selected");
+            });
+        }
+    });
+
+    card.addEventListener("click", () => {
+        selectProperty(index);
+    });
 });

@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const path = require("path");
 const fs = require("fs");
@@ -5,7 +6,24 @@ const fs = require("fs");
 const app = express();
 const PORT = 3000;
 
-app.use(express.static(__dirname));
+app.use(express.static(__dirname, {
+    index: false
+}));
+
+app.get("/", (req, res) => {
+    let html = fs.readFileSync(
+        path.join(__dirname, "index.html"),
+        "utf8"
+    );
+
+    html = html.replace(
+        "YOUR_GOOGLE_MAPS_API_KEY",
+        process.env.GOOGLE_MAPS_API_KEY
+    );
+
+    res.send(html);
+});
+
 app.use("/node_modules", express.static(path.join(__dirname, "node_modules")));
 
 app.get("/get-property", (req, res) => {

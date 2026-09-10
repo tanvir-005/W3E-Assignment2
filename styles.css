@@ -746,12 +746,21 @@ box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
     }
 }
 
-iframe {
+#property-map {
     height: 100%;
     width: 100%;
 }
 
 
+}
+
+.r11.map-selected,
+.r12.map-selected,
+.r13.map-selected,
+.r21.map-selected,
+.r22.map-selected,
+.r23.map-selected {
+    border: 2px solid var(--medium);
 }
 
 @media (max-width: 1024px) {
