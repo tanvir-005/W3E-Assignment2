@@ -2245,3 +2245,26 @@ footer {
         font-size: 1em;
     }
 }
+
+.top-images-counter {
+    display: none;
+}
+
+@media (max-width: 1024px) {
+    .top-images-counter {
+        display: block;
+        position: absolute;
+        top: 12px;
+        right: 12px;
+
+        padding: 5px 10px;
+        border-radius: 50rem;
+
+        background-color: rgba(0, 0, 0, 0.45);
+        color: white;
+
+        font-size: 0.75em;
+        line-height: 1;
+        z-index: 5;
+    }
+}

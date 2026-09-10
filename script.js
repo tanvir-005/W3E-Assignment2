@@ -238,22 +238,35 @@ const viewAllImagesButton = document.getElementById("view-all");
 const allImagesModal = document.getElementById("all-images");
 const topImagesTrack = document.getElementById("top-images-track");
 const topImagesDots = document.getElementById("top-images-dots");
+const topImagesCounter = document.getElementById("top-images-counter");
 const desktopImages = document.querySelectorAll(".images .left-img img, .images .right-top-img img, .images .right-bottom-img img");
 let topImageUrls = [];
 let topImageIndex = 0;
 
 function updateTopDots(index) {
     topImagesDots.innerHTML = "";
+
     const count = Math.min(5, topImageUrls.length);
-    const start = topImageUrls.length <= 5 ? 0 : Math.max(0, Math.min(index - 2, topImageUrls.length - 5));
+    const start = topImageUrls.length <= 5
+        ? 0
+        : Math.max(0, Math.min(index - 2, topImageUrls.length - 5));
+
     for (let i = 0; i < count; i++) {
         const imageIndex = start + i;
+
         const dot = document.createElement("button");
         dot.type = "button";
         dot.className = "top-images-dot" + (imageIndex === index ? " active" : "");
         dot.setAttribute("aria-label", `Image ${imageIndex + 1}`);
         dot.addEventListener("click", () => goToTopImage(imageIndex));
+
         topImagesDots.appendChild(dot);
+    }
+
+    // Update image counter
+    if (topImagesCounter) {
+        topImagesCounter.textContent =
+            `${index + 1}/${topImageUrls.length}`;
     }
 }
 
