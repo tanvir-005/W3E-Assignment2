@@ -688,6 +688,15 @@ box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
     }
 }
 
+.favorite-button {
+    cursor: pointer;
+}
+
+.favorite-button.is-favorite {
+    background-color: var(--medium);
+    border-color: var(--medium);
+}
+
 .desc-area {
     display: flex;
     flex-direction: column;

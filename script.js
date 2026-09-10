@@ -322,6 +322,86 @@ let selectedPropertyIndex = -1;
 let lockedPropertyIndex = -1;
 let hoveredPropertyIndex = -1;
 
+const FAVORITES_STORAGE_KEY = "stayandplay-favourites";
+
+let favoritePropertyIds = loadFavoritePropertyIds();
+
+function loadFavoritePropertyIds() {
+    try {
+        const saved = JSON.parse(
+            localStorage.getItem(FAVORITES_STORAGE_KEY) || "[]"
+        );
+
+        return new Set(
+            Array.isArray(saved) ? saved.map(String) : []
+        );
+    } catch (error) {
+        console.warn("Could not load favourites:", error);
+        return new Set();
+    }
+}
+
+function saveFavoritePropertyIds() {
+    try {
+        localStorage.setItem(
+            FAVORITES_STORAGE_KEY,
+            JSON.stringify([...favoritePropertyIds])
+        );
+    } catch (error) {
+        console.warn("Could not save favourites:", error);
+    }
+}
+
+function getPropertyFavoriteId(item) {
+    return item?.ID != null ? String(item.ID) : "";
+}
+
+function updateFavoriteButton(card, item) {
+    const heart = card.querySelector(".favorite-button");
+
+    if (!heart || !item) return;
+
+    const favoriteId = getPropertyFavoriteId(item);
+    const isFavorite = favoritePropertyIds.has(favoriteId);
+
+    heart.dataset.favoriteId = favoriteId;
+
+    heart.classList.toggle("is-favorite", isFavorite);
+
+    heart.setAttribute(
+        "aria-pressed",
+        String(isFavorite)
+    );
+
+    heart.setAttribute(
+        "alt",
+        isFavorite
+            ? "Remove from favourites"
+            : "Add to favourites"
+    );
+}
+
+function toggleFavorite(card) {
+    const heart = card.querySelector(".favorite-button");
+
+    if (!heart) return;
+
+    const index = Array.from(propertyCards).indexOf(card);
+    const favoriteId = heart.dataset.favoriteId;
+
+    if (!favoriteId || !propertyData[index]) return;
+
+    if (favoritePropertyIds.has(favoriteId)) {
+        favoritePropertyIds.delete(favoriteId);
+    } else {
+        favoritePropertyIds.add(favoriteId);
+    }
+
+    saveFavoritePropertyIds();
+
+    updateFavoriteButton(card, propertyData[index]);
+}
+
 const propertyCards = document.querySelectorAll(
     ".carousel-track > .r11, " +
     ".carousel-track > .r12, " +
@@ -452,6 +532,9 @@ function updatePropertyCard(card, item) {
             }
         };
     }
+
+
+    updateFavoriteButton(card, item);
 }
 
 function clearPropertyCard(card) {
@@ -473,6 +556,7 @@ function initPropertyMap() {
             lng: -81.3792
         },
         zoom: 10,
+        mapId: "DEMO_MAP_ID",
         mapTypeControl: false,
         streetViewControl: false,
         fullscreenControl: true,
@@ -634,7 +718,7 @@ function renderPropertyMarkers(properties) {
 
     // Remove old markers
     propertyMarkers.forEach(marker => {
-        if (marker) marker.setMap(null);
+        if (marker) marker.map = null;
     });
 
     propertyMarkers = [];
@@ -647,11 +731,12 @@ function renderPropertyMarkers(properties) {
 
         if (!Number.isFinite(lat) || !Number.isFinite(lng)) return;
 
-        const marker = new google.maps.Marker({
+        const marker = new google.maps.marker.AdvancedMarkerElement({
             position: { lat, lng },
             map: propertyMap,
-            icon: createMarkerIcon(false),
-            title: item.Property?.PropertyName || `Property ${index + 1}`
+            content: createMarkerContent(false),
+            title: item.Property?.PropertyName || `Property ${index + 1}`,
+            zIndex: 1
         });
 
         marker.addListener("click", () => {
@@ -664,8 +749,8 @@ function renderPropertyMarkers(properties) {
                 propertyMarkers.forEach(marker => {
                     if (!marker) return;
 
-                    marker.setIcon(createMarkerIcon(false));
-                    marker.setZIndex(undefined);
+                    marker.content = createMarkerContent(false);
+                    marker.zIndex = 1;
                 });
 
                 propertyCards.forEach(card => {
@@ -702,36 +787,41 @@ function renderPropertyMarkers(properties) {
     }
 }
 
-function createMarkerIcon(isSelected = false) {
+function createMarkerContent(isSelected = false) {
     const fill = isSelected ? "#93D99A" : "#71D0E6";
 
-    return {
-        url: "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(`
-            <svg xmlns="http://www.w3.org/2000/svg"
-                 width="42"
-                 height="52"
-                 viewBox="0 0 42 52">
+    const marker = document.createElement("div");
 
-                <path
-                    d="M21 2
-                       C10.5 2 2 10.5 2 21
-                       C2 34.5 21 50 21 50
-                       C21 50 40 34.5 40 21
-                       C40 10.5 31.5 2 21 2Z"
-                    fill="${fill}"
-                    stroke="#222f24"
-                    stroke-width="2.5"/>
+    marker.innerHTML = `
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="42"
+            height="52"
+            viewBox="0 0 42 52">
 
-                <circle
-                    cx="21"
-                    cy="21"
-                    r="6"
-                    fill="#222f24"/>
-            </svg>
-        `),
-        scaledSize: new google.maps.Size(42, 52),
-        anchor: new google.maps.Point(21, 50)
-    };
+            <path
+                d="M21 2
+                   C10.5 2 2 10.5 2 21
+                   C2 34.5 21 50 21 50
+                   C21 50 40 34.5 40 21
+                   C40 10.5 31.5 2 21 2Z"
+                fill="${fill}"
+                stroke="#222f24"
+                stroke-width="2.5"/>
+
+            <circle
+                cx="21"
+                cy="21"
+                r="6"
+                fill="#222f24"/>
+        </svg>
+    `;
+
+    marker.style.width = "42px";
+    marker.style.height = "52px";
+    marker.style.transform = "translate(-50%, -100%)";
+
+    return marker;
 }
 
 function selectProperty(index, options = {}) {
@@ -750,7 +840,7 @@ function selectProperty(index, options = {}) {
     updatePropertySelection(index);
 
     if (centerMap && propertyMarkers[index]) {
-        const position = propertyMarkers[index].getPosition();
+        const position = propertyMarkers[index].position;
 
         if (position) {
             propertyMap.panTo(position);
@@ -778,13 +868,9 @@ function updatePropertySelection(index) {
 
         const isSelected = markerIndex === index;
 
-        marker.setIcon(createMarkerIcon(isSelected));
+        marker.content = createMarkerContent(isSelected);
 
-        marker.setZIndex(
-            isSelected
-                ? google.maps.Marker.MAX_ZINDEX + 1
-                : undefined
-        );
+        marker.zIndex = isSelected ? 1000 : 1;
     });
 
     propertyCards.forEach((card, cardIndex) => {
@@ -841,8 +927,8 @@ propertyCards.forEach((card, index) => {
             propertyMarkers.forEach(marker => {
                 if (!marker) return;
 
-                marker.setIcon(createMarkerIcon(false));
-                marker.setZIndex(undefined);
+                marker.content = createMarkerContent(false);
+                marker.zIndex = 1;
             });
 
             propertyCards.forEach(propertyCard => {
@@ -852,6 +938,17 @@ propertyCards.forEach((card, index) => {
     });
 
     card.addEventListener("click", () => {
-        selectProperty(index);
+        selectProperty(index, {
+            centerMap: true
+        });
     });
+
+    const favoriteButton = card.querySelector(".favorite-button");
+
+    if (favoriteButton) {
+        favoriteButton.addEventListener("click", (event) => {
+            event.stopPropagation();
+            toggleFavorite(card);
+        });
+    }
 });

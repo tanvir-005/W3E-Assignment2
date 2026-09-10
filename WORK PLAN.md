@@ -27,7 +27,7 @@
 - Add an `images` directory with 10 property images.
 - Return the 10 image paths from `/images`.
 
-## 3. Gallery [IN PROGRESS]
+## 3. Gallery [DONE]
 
 - Make **View All Images** open a modal.
 - Fetch gallery images from `/images`.
@@ -40,14 +40,14 @@
 - Show a maximum of 5 dot indicators.
 - Make the dot indicators slide dynamically with the images.
 
-## 4. Description
+## 4. Description [DONE]
 
 - Make **Read more** expand the description.
 - Add a **Collapse** button.
 - Ensure expanding/collapsing does not break other DOM elements.
 
 
-## 5. Nearby Properties
+## 5. Nearby Properties [DONE]
 
 - Add a dropdown with:
     -   Most Popular
@@ -64,7 +64,7 @@
 - Use the required image service:
     `https://beta.imgservice.rentbyowner.com/640x300/`
 
-## 6. Favorites
+## 6. Favorites [IN PROGRESS]
 
 - Make the Favorite/Heart icon toggle to a red active state.
 - Store each property ID in local storage.
@@ -72,7 +72,7 @@
 - Keep the favorites list consistent across desktop/tablet/mobile.
 - Ensure adding and removing favorites works correctly.
 
-## 7. Map
+## 7. Map [DONE]
 
 - Add map markers for properties shown in Nearby Properties.
 - Hovering a property tile highlights its map marker.
