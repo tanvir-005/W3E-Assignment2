@@ -312,56 +312,267 @@ allImagesModal.addEventListener("click", event => {
     if (event.target === allImagesModal) allImagesModal.style.display = "none";
 });
 
+/* Nearby Properties */
+
+const propertySort = document.getElementById("property-sort");
+const propertyCards = document.querySelectorAll(
+    ".carousel-track > .r11, " +
+    ".carousel-track > .r12, " +
+    ".carousel-track > .r13, " +
+    ".carousel-track > .r21, " +
+    ".carousel-track > .r22, " +
+    ".carousel-track > .r23"
+);
+
+const PROPERTY_IMAGE_PREFIX =
+    "https://beta.imgservice.rentbyowner.com/640x300/";
+
+function getPropertyLimit() {
+    return window.innerWidth <= 1024 ? 4 : 6;
+}
+
+function getPropertyApiUrl(sort, limit) {
+    const params = new URLSearchParams();
+
+    params.set("limit", limit);
+
+    if (sort === "highest-price") {
+        params.set("highest-price", "true");
+    } else if (sort === "lowest-price") {
+        params.set("lowest-price", "true");
+    }
+
+    return `/get-property?${params.toString()}`;
+}
+
+function formatPropertyPrice(price) {
+    if (typeof price !== "number") {
+        return price;
+    }
+
+    return price.toLocaleString("en-US", {
+        maximumFractionDigits: 2
+    });
+}
+
+function getPropertyDescription(property) {
+    const amenities = (property.TopAmenities || [])
+        .map(amenity => amenity.Name)
+        .filter(Boolean);
+
+    if (property.Counts?.Occupancy != null) {
+        amenities.push(`Sleeps ${property.Counts.Occupancy}`);
+    }
+
+    return amenities.join(" - ");
+}
+
+function getPropertyRating(property) {
+    const score = property.ReviewScore;
+
+    if (typeof score !== "number") {
+        return "";
+    }
+
+    const rating = score > 5 ? score / 2 : score;
+    const roundedRating = Math.max(0, Math.min(5, Math.round(rating)));
+
+    return "★".repeat(roundedRating) +
+           "☆".repeat(5 - roundedRating);
+}
+
+function getPropertySite(partner) {
+    if (!partner?.URL) {
+        return "";
+    }
+
+    try {
+        return new URL(partner.URL).hostname.replace(/^www\./, "");
+    } catch {
+        return "";
+    }
+}
+
+function updatePropertyCard(card, item) {
+    const property = item.Property || {};
+    const location = item.GeoInfo?.Display || "";
+    const partner = item.Partner || {};
+
+    const imageArea = card.querySelector(".img-area");
+    const review = card.querySelector(".review");
+    const title = card.querySelector("h3");
+    const site = card.querySelector(".site");
+    const price = card.querySelector(".price");
+    const description = card.querySelector(".desc-area p");
+    const locationElement = card.querySelector(".location");
+
+    if (imageArea) {
+        imageArea.style.backgroundImage =
+            `url("${PROPERTY_IMAGE_PREFIX}${property.FeatureImage}")`;
+    }
+
+    if (review) {
+        review.textContent = getPropertyRating(property);
+    }
+
+    if (title) {
+        title.textContent = property.PropertyName || "";
+    }
+
+    if (site) {
+        site.textContent = getPropertySite(partner);
+    }
+
+    if (price) {
+        price.textContent =
+            `From $${formatPropertyPrice(property.Price)}`;
+    }
+
+    if (description) {
+        description.textContent = getPropertyDescription(property);
+    }
+
+    if (locationElement) {
+        locationElement.textContent = location;
+    }
+
+    const learnMore = card.querySelector(".learn-more");
+
+    if (learnMore) {
+        learnMore.onclick = () => {
+            if (partner.URL) {
+                window.open(partner.URL, "_blank");
+            }
+        };
+    }
+}
+
+function clearPropertyCard(card) {
+    card.style.display = "none";
+}
+
+function showPropertyCard(card) {
+    card.style.display = "";
+}
+
+async function loadProperties(sort = "most-popular") {
+    const limit = getPropertyLimit();
+
+    try {
+        const response = await fetch(getPropertyApiUrl(sort, limit));
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const properties = await response.json();
+
+        propertyCards.forEach(clearPropertyCard);
+
+        properties.slice(0, limit).forEach((item, index) => {
+            const card = propertyCards[index];
+
+            if (!card) return;
+
+            updatePropertyCard(card, item);
+            showPropertyCard(card);
+        });
+
+        /*
+         * Reset mobile carousel position after changing the
+         * property order/content.
+         */
+        if (window.innerWidth <= 1024) {
+            resortTrack.scrollTo({
+                left: 0,
+                behavior: "auto"
+            });
+
+            resortIndex = 0;
+
+            resortDots.forEach((dot, i) => {
+                dot.classList.toggle("active", i === 0);
+            });
+        }
+
+    } catch (error) {
+        console.error("Failed to load properties:", error);
+    }
+}
+
+propertySort.addEventListener("change", function () {
+    loadProperties(this.value);
+});
+
+let lastPropertyLimit = getPropertyLimit();
+
+window.addEventListener("resize", function () {
+    const currentLimit = getPropertyLimit();
+
+    if (currentLimit !== lastPropertyLimit) {
+        lastPropertyLimit = currentLimit;
+        loadProperties(propertySort.value);
+    }
+});
+
+loadProperties(propertySort.value);
 
 const resortTrack = document.querySelector(".carousel-track");
-const resortSlides = document.querySelectorAll(".carousel-track > div");
-const resortDots = document.querySelectorAll(".carousel-dot");
 const resortPrev = document.querySelector(".carousel-prev");
 const resortNext = document.querySelector(".carousel-next");
+const resortDots = document.querySelectorAll(".carousel-dot");
 
 let resortIndex = 0;
 
-function goToResort(index) {
-resortIndex = (index + 4) % 4;
-
-
-resortTrack.scrollTo({
-    left: resortIndex * resortTrack.clientWidth,
-    behavior: "smooth"
-});
-
-resortDots.forEach((dot, i) => {
-    dot.classList.toggle("active", i === resortIndex);
-});
-
-
+function getVisiblePropertyCount() {
+    return getPropertyLimit();
 }
 
-resortNext.addEventListener("click", function () {
-goToResort(resortIndex + 1);
-});
+function goToResort(index) {
+    const count = getVisiblePropertyCount();
 
-resortPrev.addEventListener("click", function () {
-goToResort(resortIndex - 1);
-});
+    if (count <= 0) return;
 
-resortDots.forEach(function (dot, index) {
-dot.addEventListener("click", function () {
-goToResort(index);
-});
-});
+    resortIndex = (index + count) % count;
 
-resortTrack.addEventListener("scroll", function () {
-const index = Math.round(resortTrack.scrollLeft / resortTrack.clientWidth);
+    resortTrack.scrollTo({
+        left: resortIndex * resortTrack.clientWidth,
+        behavior: "smooth"
+    });
 
-
-if (index >= 0 && index < 4) {
-    resortIndex = index;
-
-    resortDots.forEach(function (dot, i) {
+    resortDots.forEach((dot, i) => {
         dot.classList.toggle("active", i === resortIndex);
     });
 }
 
+resortNext.addEventListener("click", function () {
+    goToResort(resortIndex + 1);
+});
 
+resortPrev.addEventListener("click", function () {
+    goToResort(resortIndex - 1);
+});
+
+resortDots.forEach(function (dot, index) {
+    dot.addEventListener("click", function () {
+        goToResort(index);
+    });
+});
+
+resortTrack.addEventListener("scroll", function () {
+    if (window.innerWidth > 1024) return;
+
+    const index = Math.round(
+        resortTrack.scrollLeft / resortTrack.clientWidth
+    );
+
+    const count = getVisiblePropertyCount();
+
+    if (index >= 0 && index < count) {
+        resortIndex = index;
+
+        resortDots.forEach(function (dot, i) {
+            dot.classList.toggle("active", i === resortIndex);
+        });
+    }
 });
