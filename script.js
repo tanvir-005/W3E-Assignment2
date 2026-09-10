@@ -278,3 +278,55 @@ allImagesModal.addEventListener("click", function (event) {
 });
 
 
+const resortTrack = document.querySelector(".carousel-track");
+const resortSlides = document.querySelectorAll(".carousel-track > div");
+const resortDots = document.querySelectorAll(".carousel-dot");
+const resortPrev = document.querySelector(".carousel-prev");
+const resortNext = document.querySelector(".carousel-next");
+
+let resortIndex = 0;
+
+function goToResort(index) {
+resortIndex = (index + 4) % 4;
+
+
+resortTrack.scrollTo({
+    left: resortIndex * resortTrack.clientWidth,
+    behavior: "smooth"
+});
+
+resortDots.forEach((dot, i) => {
+    dot.classList.toggle("active", i === resortIndex);
+});
+
+
+}
+
+resortNext.addEventListener("click", function () {
+goToResort(resortIndex + 1);
+});
+
+resortPrev.addEventListener("click", function () {
+goToResort(resortIndex - 1);
+});
+
+resortDots.forEach(function (dot, index) {
+dot.addEventListener("click", function () {
+goToResort(index);
+});
+});
+
+resortTrack.addEventListener("scroll", function () {
+const index = Math.round(resortTrack.scrollLeft / resortTrack.clientWidth);
+
+
+if (index >= 0 && index < 4) {
+    resortIndex = index;
+
+    resortDots.forEach(function (dot, i) {
+        dot.classList.toggle("active", i === resortIndex);
+    });
+}
+
+
+});

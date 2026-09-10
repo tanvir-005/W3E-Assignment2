@@ -464,222 +464,327 @@ article {
 }
 
 .resorts {
-    /* background-color: bisque; */
-    display: grid;
-    grid-template-rows: repeat(2, minmax(35vh, auto));
-    grid-template-columns: 2fr 2fr 2fr 3fr;
-    grid-gap: 8px;
+display: grid;
+grid-template-rows: repeat(2, minmax(35vh, auto));
+grid-template-columns: 2fr 2fr 2fr 3fr;
+grid-gap: 8px;
+}
 
-    @media (max-width: 1024px) {
-        height: 100vh;
-        grid-template-rows: 1fr 1fr 1fr;
-        grid-template-columns: 1fr 1fr 1fr;
-    }
-
-    @media (max-width: 768px) {
-        height: 45vh;
-        width: 100%;
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr;
-    }
+.carousel-track {
+display: contents;
 }
 
 .r11 {
-    /* background-color: green; */
-    grid-area: 1 / 1 / 2 / 2;
-
-    @media (max-width: 1024px) {
-        grid-area: 2 / 1 / 3 / 2;
-    }
-    @media (max-width: 768px) {
-        grid-area: 1 / 1 / 2 / 2;
-    }
+grid-area: 1 / 1 / 2 / 2;
 }
 
 .r12 {
-    /* background-color: yellow; */
-    grid-area: 1 / 2 / 2 / 3;
-
-    @media (max-width: 1024px) {
-        grid-area: 2 / 2 / 3 / 3;
-    }
-    @media (max-width: 768px) {
-        display: none;
-    }
+grid-area: 1 / 2 / 2 / 3;
 }
 
 .r13 {
-    /* background-color: red; */
-    grid-area: 1 / 3 / 2 / 4;
-
-    @media (max-width: 1024px) {
-        grid-area: 2 / 3 / 3 / 4;
-    }
-    @media (max-width: 768px) {
-        display: none;
-    }
+grid-area: 1 / 3 / 2 / 4;
 }
 
 .r21 {
-    /* background-color: teal; */
-    grid-area: 2 / 1 / 3 / 2;
-
-    @media (max-width: 1024px) {
-        grid-area: 3 / 1 / 4 / 2;
-    }
-    @media (max-width: 768px) {
-        display: none;
-    }
+grid-area: 2 / 1 / 3 / 2;
 }
 
 .r22 {
-    /* background-color: navy; */
-    grid-area: 2 / 2 / 3 / 3;
-
-    @media (max-width: 1024px) {
-        grid-area: 3 / 2 / 4 / 3;
-    }
-    @media (max-width: 768px) {
-        display: none;
-    }
+grid-area: 2 / 2 / 3 / 3;
 }
 
 .r23 {
-    /* background-color: blue; */
-    grid-area: 2 / 3 / 3 / 4;
-
-    @media (max-width: 1024px) {
-        grid-area: 3 / 3 / 4 / 4;
-    }
-    @media (max-width: 768px) {
-        display: none;
-    }
+grid-area: 2 / 3 / 3 / 4;
 }
 
 .map {
-    /* background-color: black; */
-    grid-area: 1 / 4 / 3 / 5;
+grid-area: 1 / 4 / 3 / 5;
+}
 
-    @media (max-width: 1024px) {
-        grid-area: 1 / 1 / 2 / 4;
-    }
-    @media (max-width: 768px) {
-        display: none;
-    }
+.carousel-arrow,
+.carousel-dots {
+display: none;
 }
 
 .r11, .r12, .r13, .r21, .r22, .r23, .map {
-    /* background-color: lightcyan; */
+border-radius: 8px;
+overflow: hidden;
+border: 0.5px solid rgba(0, 0, 0, 0.1);
+box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+
+
+.img-area {
+    height: 40%;
+    width: 100%;
+    background-image: url(assets/lakefront.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: space-around;
+    align-items: start;
+
+    button {
+        font-size: 0.5em;
+        margin-left: 8px;
+        margin-top: 8px;
+        text-align: left;
+        padding: 8px 12px;
+        background-color: rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        color: white;
+        border-radius: 50rem;
+    }
+
+    img {
+        margin-top: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        height: 24px;
+        width: 24px;
+        padding: 6px;
+        border-radius: 50rem;
+        background-color: rgba(0, 0, 0, 0.3);
+    }
+}
+
+.desc-area {
+    display: flex;
+    flex-direction: column;
+    padding: 12px;
+
+    h3 {
+        font-size: 1em;
+        margin-bottom: 8px;
+    }
+
+    .site {
+        font-size: 0.7em;
+        color: var(--lightgrey);
+    }
+
+    .price {
+        font-size: 0.9em;
+        font-weight: bold;
+        color: var(--medium);
+        margin-bottom: 8px;
+    }
+
+    p {
+        font-size: 0.7em;
+        color: var(--lightgrey);
+        margin-bottom: 8px;
+    }
+
+    .location {
+        font-size: 0.7em;
+        margin-bottom: 12px;
+    }
+
+    .button-area {
+        display: flex;
+        justify-content: space-between;
+
+        button {
+            flex: 1;
+            font-size: 0.7em;
+            height: 24px;
+            border-radius: 50rem;
+            background-color: transparent;
+        }
+
+        .learn-more {
+            color: var(--lightgrey);
+            border: 1px solid var(--lightgrey);
+        }
+
+        .see-dates {
+            margin-left: 8px;
+            border: none;
+            background-color: var(--primary-light);
+        }
+    }
+}
+
+iframe {
+    height: 100%;
+    width: 100%;
+}
+
+
+}
+
+@media (max-width: 1024px) {
+.resorts {
+display: block;
+position: relative;
+width: 100%;
+height: 70vh;
+}
+
+
+.carousel-track {
+    display: flex;
+    width: 100%;
+    height: calc(100% - 40px);
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+
+.carousel-track::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel-track > div {
+    flex: 0 0 100%;
+    width: 100%;
+    height: 100%;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+}
+
+.r11,
+.r12,
+.r13,
+.r21 {
+    grid-area: auto;
+}
+
+.r22,
+.r23,
+.map {
+    display: none;
+}
+
+.carousel-arrow {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 5;
+    width: 36px;
+    height: 36px;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.45);
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.carousel-prev {
+    left: 10px;
+}
+
+.carousel-next {
+    right: 10px;
+}
+
+.carousel-dots {
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.carousel-dot {
+    width: 7px;
+    height: 7px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background-color: var(--lightgrey);
+    cursor: pointer;
+}
+
+.carousel-dot.active {
+    width: 17px;
+    height: 17px;
+    background-color: transparent;
+    border: 2px solid var(--medium);
+}
+
+.carousel-track > div {
     border-radius: 8px;
     overflow: hidden;
     border: 0.5px solid rgba(0, 0, 0, 0.1);
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-
-    .img-area {
-        height: 40%;
-        width: 100%;
-        background-image: url(assets/lakefront.png);
-        background-size:cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        display: flex;
-        justify-content: space-around;
-        align-items: start;
-        @media (max-width: 768px) {
-            height: 60%;
-            gap: 18px;
-        }
-        
-        button {
-            font-size: 0.5em;
-            margin-left: 8px;
-            margin-top: 8px;
-            text-align: left;
-            padding: 8px 12px;
-            background-color: rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            color: white;
-            border-radius: 50rem;
-
-            @media (max-width: 768px) {
-                flex: 1;
-            }
-        }
-        
-        img {
-            margin-top: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            height: 24px;
-            width: 24px;
-            padding: 6px;
-            border-radius: 50rem;
-            background-color: rgba(0, 0, 0, 0.3);
-        }
-    }
-
-    .desc-area {
-        display: flex;
-        flex-direction: column;
-        padding: 12px;
-
-        h3 {
-            font-size: 1em;
-            margin-bottom: 8px;
-        }
-        .site {
-            font-size: 0.7em;
-            color: var(--lightgrey);
-        }
-        
-        .price {
-            font-size: 0.9em;
-            font-weight: bold;
-            color: var(--medium);
-            margin-bottom: 8px;
-        }
-
-        p {
-            font-size: 0.7em;
-            color: var(--lightgrey);
-            margin-bottom: 8px;
-        }
-
-        .location {
-            font-size: 0.7em;
-            margin-bottom: 12px;
-        }
-
-        .button-area {
-            display: flex;
-            justify-content: space-between;
-
-            button {
-                flex: 1;
-                font-size: 0.7em;
-                height: 24px;
-                border-radius: 50rem;
-                background-color: transparent;
-            }
-
-            .learn-more {
-                color: var(--lightgrey);
-                border: 1px solid var(--lightgrey);
-            }
-
-            .see-dates {
-                margin-left: 8px;
-                border: none;
-                background-color: var(--primary-light);
-            }
-        }
-    }
-
-    iframe {
-        height: 100%;
-        width: 100%;
-    }
 }
+
+.carousel-track .img-area {
+    height: 55%;
+}
+
+.carousel-track .desc-area {
+    padding: 16px;
+}
+
+
+}
+
+@media (max-width: 768px) {
+.resorts {
+height: 45vh;
+}
+
+
+.carousel-track {
+    height: calc(100% - 40px);
+}
+
+.carousel-track .img-area {
+    height: 60%;
+    gap: 18px;
+}
+
+.carousel-track .img-area button {
+    flex: 1;
+}
+
+.carousel-track .desc-area {
+    padding: 12px;
+}
+
+.carousel-track .desc-area h3 {
+    font-size: 1em;
+}
+
+.carousel-track .desc-area p {
+    font-size: 0.7em;
+}
+
+.carousel-track .site,
+.carousel-track .location {
+    font-size: 0.7em;
+}
+
+.carousel-arrow {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+}
+
+.carousel-prev {
+    left: 8px;
+}
+
+.carousel-next {
+    right: 8px;
+}
+
+
+}
+
 
 .pages {
     margin-top: 12px;
