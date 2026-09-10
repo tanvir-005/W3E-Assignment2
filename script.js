@@ -234,47 +234,69 @@ if (descriptionToggle && descriptionWrapper) {
     });
 }
 
-const viewAllImagesButton = document.getElementById('view-all');
-const allImagesModal = document.getElementById('all-images');
+const viewAllImagesButton = document.getElementById("view-all");
+const allImagesModal = document.getElementById("all-images");
+const topImagesTrack = document.getElementById("top-images-track");
+const topImagesDots = document.getElementById("top-images-dots");
+const desktopImages = document.querySelectorAll(".images .left-img img, .images .right-top-img img, .images .right-bottom-img img");
+let topImageUrls = [];
+let topImageIndex = 0;
 
-viewAllImagesButton.addEventListener("click", async function () {
-    allImagesModal.style.display = 'flex';
-    allImagesModal.style.flexDirection = 'column';
-    // allImagesModal.style.justifyContent = 'center';
-    allImagesModal.style.alignItems = 'center';
+function updateTopDots(index) {
+    topImagesDots.innerHTML = "";
+    const count = Math.min(5, topImageUrls.length);
+    const start = topImageUrls.length <= 5 ? 0 : Math.max(0, Math.min(index - 2, topImageUrls.length - 5));
+    for (let i = 0; i < count; i++) {
+        const imageIndex = start + i;
+        const dot = document.createElement("button");
+        dot.type = "button";
+        dot.className = "top-images-dot" + (imageIndex === index ? " active" : "");
+        dot.setAttribute("aria-label", `Image ${imageIndex + 1}`);
+        dot.addEventListener("click", () => goToTopImage(imageIndex));
+        topImagesDots.appendChild(dot);
+    }
+}
 
-    allImagesModal.innerHTML = '<p style="color: white;">Loading images...</p>';
+function goToTopImage(index) {
+    topImageIndex = (index + topImageUrls.length) % topImageUrls.length;
+    topImagesTrack.scrollTo({ left: topImageIndex * topImagesTrack.clientWidth, behavior: "smooth" });
+    updateTopDots(topImageIndex);
+}
 
+async function loadTopImages() {
     try {
-        const response = await fetch('/images');
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-
-        const imageUrls = await response.json();
-
-        allImagesModal.innerHTML = imageUrls
-            .map(url => `<img src="${url}" alt="Gallery Image" class="modal-img" />`)
-            .join('');
-
-        allImagesModal.innerHTML += `<button class="close-modal" id="close-modal" aria-label="Close modal">&times;</button>`;
-
-        const closeButton = document.getElementById('close-modal');
-
-        closeButton.addEventListener("click", function () {
-            allImagesModal.style.display = "none";
-        });
-
+        const response = await fetch("/images");
+        if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+        topImageUrls = await response.json();
+        desktopImages.forEach((img, i) => img.src = topImageUrls[i] || topImageUrls[0]);
+        topImagesTrack.innerHTML = topImageUrls.map((url, i) => `<div class="top-image-slide"><img src="${url}" alt="Gallery Image ${i + 1}"></div>`).join("");
+        updateTopDots(0);
     } catch (error) {
-        console.error('Failed to load images:', error);
-        allImagesModal.innerHTML = '<p style="color: white;">Failed to load images. Please try again.</p>';
+        console.error("Failed to load images:", error);
+    }
+}
+
+topImagesTrack.addEventListener("scroll", () => {
+    const index = Math.round(topImagesTrack.scrollLeft / topImagesTrack.clientWidth);
+    if (index !== topImageIndex && index >= 0 && index < topImageUrls.length) {
+        topImageIndex = index;
+        updateTopDots(index);
     }
 });
 
-allImagesModal.addEventListener("click", function (event) {
-    if (event.target === allImagesModal) {
-        allImagesModal.style.display = "none";
-    }
+loadTopImages();
+
+viewAllImagesButton.addEventListener("click", () => {
+    allImagesModal.style.display = "flex";
+    allImagesModal.style.flexDirection = "column";
+    allImagesModal.style.alignItems = "center";
+    allImagesModal.innerHTML = topImageUrls.map(url => `<img src="${url}" alt="Gallery Image" class="modal-img">`).join("");
+    allImagesModal.innerHTML += `<button class="close-modal" id="close-modal" aria-label="Close modal">&times;</button>`;
+    document.getElementById("close-modal").addEventListener("click", () => allImagesModal.style.display = "none");
+});
+
+allImagesModal.addEventListener("click", event => {
+    if (event.target === allImagesModal) allImagesModal.style.display = "none";
 });
 
 

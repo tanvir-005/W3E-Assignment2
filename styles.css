@@ -261,64 +261,204 @@ article {
 .images {
     height: 70vh;
     position: relative;
-    @media (max-width: 1024px) {
-        height: 50vh;
-        .view-all {
-            display: none;
-        }
-    }
+
     display: grid;
     grid-template-columns: 5fr 2fr;
     grid-template-rows: repeat(2, 1fr);
-    border-radius: 10px;
-    /* background-color: red; */
-    overflow: hidden;
 
-    .view-all {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* =========================================================
+   TOP IMAGE CAROUSEL - TABLET + MOBILE
+   ========================================================= */
+
+@media (max-width: 1024px) {
+
+    .images {
+        height: 50vh;
+
+        display: block;
+        position: relative;
+
+        overflow: hidden;
+    }
+
+    /* Hide desktop 3-image layout */
+    .images .left-img,
+    .images .right-top-img,
+    .images .right-bottom-img {
+        display: none;
+    }
+
+    /* Horizontal swipe area */
+    .top-images-track {
+        display: flex;
+
+        width: 100%;
+        height: calc(100% - 40px);
+
+        overflow-x: auto;
+        overflow-y: hidden;
+
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+
+        scrollbar-width: none;
+
+        /* Important for touch dragging */
+        touch-action: pan-x;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .top-images-track::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Every image occupies exactly one screen */
+    .top-images-track .top-image-slide {
+        flex: 0 0 100%;
+        width: 100%;
+        height: 100%;
+
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+
+        min-width: 100%;
+    }
+
+    .top-images-track .top-image-slide img {
+        display: block;
+
+        width: 100%;
+        height: 100%;
+
+        object-fit: cover;
+        border: none;
+    }
+
+    /* Five visible dots */
+    .top-images-dots {
+        display: flex;
+        
         position: absolute;
-        bottom: 18px;
-        right: 24px;
-        height: 32px;
-        padding: 0 18px;
-        border-radius: 50rem;
-        border: 2px solid white;
-        color: white;
-        background-color: rgba(0, 0, 0, 0.1);
+        bottom: 0;
+        left: 0;
+
+        width: 100%;
+        height: 40px;
+
+        align-items: center;
+        justify-content: center;
+
+        gap: 8px;
+
+        z-index: 4;
+    }
+
+    .top-images-dot {
+        width: 7px;
+        height: 7px;
+
+        padding: 0;
+        border: none;
+        border-radius: 50%;
+
+        background-color: var(--lightgrey);
+
+        cursor: pointer;
+        flex: 0 0 auto;
+
+        transition:
+            width 0.15s ease,
+            height 0.15s ease,
+            border 0.15s ease;
+    }
+
+    .top-images-dot.active {
+        width: 17px;
+        height: 17px;
+
+        background-color: transparent;
+        border: 2px solid var(--medium);
+    }
+
+    /* View-all is still hidden on tablet/mobile */
+    .images .view-all {
+        display: none;
     }
 }
+
+@media (max-width: 768px) {
+
+    .images {
+        height: 45vh;
+    }
+
+    .top-images-track {
+        height: calc(100% - 40px);
+    }
+}
+
+.images .view-all {
+    position: absolute;
+    bottom: 18px;
+    right: 24px;
+    height: 32px;
+    padding: 0 18px;
+
+    border-radius: 50rem;
+    border: 2px solid white;
+
+    color: white;
+    background-color: rgba(0, 0, 0, 0.1);
+
+    z-index: 5;
+}
+
+/* Desktop images */
 
 .left-img {
     grid-column: 1 / 2;
     grid-row: 1 / 3;
-    /* background-color: aquamarine; */
-    @media (max-width: 1024px) {
-        grid-area: 1 / 1 / 3 / 3;
-    }
 }
 
 .right-top-img {
     grid-column: 2 / 3;
     grid-row: 1 / 2;
-    /* background-color: aquamarine; */
-    @media (max-width: 1024px) {
-        display: none;
-    }
 }
 
 .right-bottom-img {
     grid-column: 2 / 3;
     grid-row: 2 / 3;
-    /* background-color: aquamarine; */
-    @media (max-width: 1024px) {
-        display: none;
-    }
 }
 
-.left-img img, .right-top-img img, .right-bottom-img img {
+.left-img img,
+.right-top-img img,
+.right-bottom-img img {
     height: 100%;
     width: 100%;
     object-fit: cover;
     border: 1px solid white;
+    display: block;
+}
+
+/* Mobile/tablet gallery is hidden on desktop */
+
+.top-images-track,
+.top-images-dots {
+    display: none;
+}
+
+@media (max-width: 1024px) {
+    .top-images-track {
+        display: flex;
+    }
+
+    .top-images-dots {
+        display: flex;
+    }
 }
 
 .details {
