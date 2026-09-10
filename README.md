@@ -21,6 +21,8 @@ npm start
 Open [localhost:3000](http://localhost:3000)
 
 
+## Flow
+
 ```
 Sequence of works I followed: 
 
