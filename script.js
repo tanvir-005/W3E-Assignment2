@@ -1,7 +1,8 @@
+// ---------- Handle the Hotel Reservation (Date Range and Guest Selection) ----------
+
 const PRICE_PER_NIGHT = 2026;
 
 /* Elements */
-
 const bookingForm = document.getElementById("booking-form");
 const dateRangePicker = document.getElementById("date-range-picker");
 const checkIn = document.getElementById("check-in");
@@ -219,6 +220,12 @@ updateGuestUI();
 
 
 
+
+
+
+
+// ---------- Read More button and Collapse button ----------
+
 const descriptionToggle = document.querySelector(".description-toggle");
 const descriptionWrapper = document.querySelector(".description-wrapper");
 
@@ -233,6 +240,15 @@ if (descriptionToggle && descriptionWrapper) {
         }
     });
 }
+
+
+
+
+
+
+
+
+// ---------- Image Gallery ----------
 
 const viewAllImagesButton = document.getElementById("view-all");
 const allImagesModal = document.getElementById("all-images");
@@ -346,7 +362,17 @@ allImagesModal.addEventListener("click", event => {
     }
 });
 
-/* Nearby Properties */
+
+
+
+
+
+
+
+
+
+
+// ---------- ADD Properties to Favourites (Local Storage) ----------
 
 const propertySort = document.getElementById("property-sort");
 let propertyMap = null;
@@ -435,6 +461,20 @@ function toggleFavorite(card) {
 
     updateFavoriteButton(card, propertyData[index]);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ---------- Load Properties based on Selection ----------
 
 const propertyCards = document.querySelectorAll(
     ".carousel-track > .r11, " +
@@ -916,6 +956,24 @@ function updatePropertySelection(index) {
         );
     });
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ---------- Property Card Hover, Click and Favorite Interactions ----------
 
 propertyCards.forEach((card, index) => {
 

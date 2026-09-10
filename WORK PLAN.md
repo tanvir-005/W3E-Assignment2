@@ -78,7 +78,7 @@
 - Hovering a property tile highlights its map marker.
 - Clicking a map marker highlights its property tile.
 
-## 8. Validation [INPROGRESS]
+## 8. Validation [DONE]
 
 - Do not commit the Google Maps API key.
 - Exclude the API key using `.gitignore`.
@@ -88,8 +88,9 @@
 - Handle edge cases properly.
 - Remove unused/dead code.
 - Keep the code clean and readable.
+- Add Comments in codes (especially script.js).
 
-## 9. Submission
+## 9. Submission [DONE]
 
 - Add a clear and concise `README.md` with project run
     instructions.

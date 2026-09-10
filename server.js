@@ -11,6 +11,7 @@ app.use(express.static(__dirname, {
 }));
 
 app.get("/", (req, res) => {
+    // only slash will open index.html
     let html = fs.readFileSync(
         path.join(__dirname, "index.html"),
         "utf8"
@@ -24,8 +25,17 @@ app.get("/", (req, res) => {
     res.send(html);
 });
 
+
+// Node Modules
 app.use("/node_modules", express.static(path.join(__dirname, "node_modules")));
 
+
+
+
+
+
+
+// Assignment Task: API: /get-property
 app.get("/get-property", (req, res) => {
     let file = "most_popular.json";
 
@@ -39,15 +49,25 @@ app.get("/get-property", (req, res) => {
     res.json(result);
 });
 
+// Assignment Task: API: /get-property
 app.get("/images", (req, res) => {
     const data = JSON.parse(fs.readFileSync(path.join(__dirname, "data", "image-links.json")));
+
+    // I have may have different number of images in my folder and I will take the last (considering most recent) 10 images or less (if we have less).
+
     let img_count = req.query.count ? Number(req.query.count) : 10;
     img_count = Math.min(img_count, data.images.length);
 
     res.json(data.images.slice(-img_count));
 });
 
-// TEST APIs ------ O B S O L E T E -------------------
+
+
+
+
+
+
+// TEST APIs ------ O B S O L E T E -------------------------------------
 app.get("/dev", (req, res) => {
     res.json({data: {
         "name": "MD. TANVIR AHMED SIDDIQUE",
@@ -62,7 +82,11 @@ app.get('/404', (req, res) => {
 app.use((req, res) => {
     res.redirect('/404');
 });
-// ----------------------------------------------------
+// ----------------------------------------------------------------------
+
+
+
+
 
 app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}`);
