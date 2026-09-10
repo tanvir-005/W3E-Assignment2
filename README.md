@@ -18,7 +18,7 @@ Run the project:
 npm start
 ```
 
-Open `[localhost:3000](http://localhost:3000)`.
+Open [localhost:3000](http://localhost:3000)
 
 
 ```
